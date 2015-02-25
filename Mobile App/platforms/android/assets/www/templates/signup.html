@@ -1,0 +1,42 @@
+<ion-view view-title="Customer Registration" class="bgblack" align-title="left">
+    <ion-nav-bar class="bar-calm" align-title="left">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon icon ion-ios7-locked"></button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <button class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+  <ion-content has-header="true" has-tabs="true" padding="true" >
+      <div class="row">
+          <div class="col col-33 col-offset-33 col-center"> <img src="img/signup_logo.png"/></div>
+      </div>
+
+    <form ng-submit="trySignup()">
+      <div class="list">
+        <label class="item item-input item-transpert">
+          <input type="text" placeholder="Name:" ng-model="loginData.name">
+        </label>
+        <label class="item item-input item-transpert">
+            <input type="text" placeholder="Number:" ng-model="loginData.number">
+        </label>
+        <label class="item item-input item-transpert">
+          <input type="text" placeholder="Email:" ng-model="loginData.email">
+        </label>
+        <label class="item item-input item-transpert">
+          <input type="password" placeholder="Password" ng-model="loginData.password">
+        </label>
+        <label class="item item-input item-transpert">
+              <input type="password" placeholder="Confirm Password" ng-model="loginData.confirm_password">
+        </label>
+            <div class="row">
+                <div class="col col-50"><button class="button button-block button-calm" type="submit">sign up</button></div>
+                <div class="col col-50"><a class="button button-block button-energized" ui-sref="login">Sing in</a></div>
+            </div>
+
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

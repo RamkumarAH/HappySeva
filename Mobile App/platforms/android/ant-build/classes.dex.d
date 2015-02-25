@@ -1,0 +1,19 @@
+C:\developmentProject\happysea\platforms\android\ant-build\classes.dex : \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\com\example\happysea\BuildConfig.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\com\example\happysea\CordovaApp.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\com\example\happysea\R$attr.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\com\example\happysea\R$drawable.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\com\example\happysea\R$string.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\com\example\happysea\R$xml.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\com\example\happysea\R.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$1.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$2.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$3.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$4.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$5$1.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$5.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$6$1.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$6.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$7.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen.class \
+C:\developmentProject\happysea\platforms\android\ant-build\dexedLibs\classes-56f50053bfb2024f2dcc7b36fa1c51f0.jar \
