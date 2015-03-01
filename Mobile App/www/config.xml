@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.example.happysea" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HappySea</name>
+    <name>HappySeva</name>
     <description>
         A Happy Sea Projects
     </description>
@@ -13,15 +13,16 @@
     <preference name="SplashScreen" value="splash" />
     <preference name="splashScreenDelay" value="10000" />
     <preference name="AutoHideSplashScreen" value="false" />
-
+<!--
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
-    </feature>
+    </feature>-->
 
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="Orientation" value="portrait" />
     <platform name="android">
         <icon src="www/res/icon/android/icon-36-ldpi.png" density="ldpi" />
         <icon src="www/res/icon/android/icon-48-mdpi.png" density="mdpi" />

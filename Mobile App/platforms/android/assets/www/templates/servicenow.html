@@ -1,0 +1,38 @@
+<ion-view cache-view="false" title="{{serviceName}}" hide-back-button="true" align-title="left" class="bgblack" >
+    <ion-content has-header="true" has-tabs="true" padding="true">
+
+        <form ng-submit="serviceNow()"  name="servicenow" >
+            <div class="list">
+                <label class="item item-input item-transpert">
+                    <input type="text" placeholder="Name:" ng-model="name" name="name" required>
+                </label>
+                <label class="item item-input item-transpert">
+                    <input type="text" placeholder="Area:" ng-model="area" name="area" required>
+                </label>
+                <label class="item item-input item-transpert">
+                    <input type="text" placeholder="Building/street:" ng-model="street" name="street" required>
+                </label>
+                <label class="item item-input item-transpert">
+                    <input type="text" placeholder="Flat/House no:" ng-model="house" name="house" required>
+                </label>
+                <label class="item item-input item-transpert">
+                    <input type="tel" placeholder="Number:" name="phone" data-phone ng-model="phone" required>
+                </label>
+                <p class="help-block" ng-show="appointment.phone.$dirty && appointment.phone.$error.phoneField">Please enter a valid phone number</p>
+                <label class="item item-input item-transpert">
+                    <input type="text" placeholder="Describe Problem:" ng-model="problem" name="problem" required>
+                </label>
+                <label class="item item-input item-transpert">
+                    <input type="text" placeholder="Upload image:" ng-model="makeimage" name="makeimage" required>
+                </label>
+
+
+                <div class="button-bar">
+                    <a class="button button-full button-calm " ui-sref="menu.appointment">Make Appointment</a>
+                    <button class="button button-full button-energized" type="submit">Service Now</button>
+
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,8 @@
+<ion-view cache-view="false" title="{{service.category}} Services" hide-back-button="true" align-title="left" class="bgblack" >
+    <ion-content has-header="true" has-tabs="true" padding="true">
+
+       <ul class="listService">
+            <li ng-repeat="list in service.list"><a ng-click="gotoService('{{list}}')">{{list}}</a></li>
+       </ul>
+    </ion-content>
+</ion-view>

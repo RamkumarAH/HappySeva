@@ -1,4 +1,4 @@
-<ion-view view-title="Customer Registration" class="bgblack" align-title="left">
+<ion-view cache-view="false" view-title="Customer Registration" class="bgblack" align-title="left">
     <ion-nav-bar class="bar-calm" align-title="left">
         <ion-nav-buttons side="left">
             <button class="button button-icon icon ion-ios7-locked"></button>
@@ -11,30 +11,33 @@
     </ion-nav-bar>
   <ion-content has-header="true" has-tabs="true" padding="true" >
       <div class="row">
-          <div class="col col-33 col-offset-33 col-center"> <img src="img/signup_logo.png"/></div>
+          <div class="col col-33 col-offset-33 col-center"><img src="img/signup_logo.png"/></div>
       </div>
-
-    <form ng-submit="trySignup()">
+    <form ng-submit="trySignup()" name="register" >
       <div class="list">
         <label class="item item-input item-transpert">
-          <input type="text" placeholder="Name:" ng-model="loginData.name">
+          <input type="text" placeholder="Name:" ng-model="name" namr="name" required>
         </label>
         <label class="item item-input item-transpert">
-            <input type="text" placeholder="Number:" ng-model="loginData.number">
+            <input type="tel" placeholder="Number:" name="phone" data-phone ng-model="phone" required>
+        </label>
+          <p class="help-block" ng-show="register.phone.$dirty && register.phone.$error.phoneField">Please enter a valid phone number</p>
+        <label class="item item-input item-transpert">
+          <input type="email" placeholder="Email:" ng-model="email" name="email" required>
+
+        </label>
+          <p class="help-block" ng-show="register.email.$dirty && register.email.$invalid">Please  enter a proper email</p>
+        <label class="item item-input item-transpert">
+          <input type="password" placeholder="Password" ng-model="password" name="password" required>
         </label>
         <label class="item item-input item-transpert">
-          <input type="text" placeholder="Email:" ng-model="loginData.email">
+              <input type="password" placeholder="Confirm Password" ng-model="password_confirm" name="password_confirm" validate-Equals="password">
         </label>
-        <label class="item item-input item-transpert">
-          <input type="password" placeholder="Password" ng-model="loginData.password">
-        </label>
-        <label class="item item-input item-transpert">
-              <input type="password" placeholder="Confirm Password" ng-model="loginData.confirm_password">
-        </label>
-            <div class="row">
-                <div class="col col-50"><button class="button button-block button-calm" type="submit">sign up</button></div>
-                <div class="col col-50"><a class="button button-block button-energized" ui-sref="login">Sing in</a></div>
-            </div>
+          <p class="help-block" ng-show="register.password_confirm.$dirty && register.password_confirm.$error.validateEquals">please match the passwords</p>
+        <div class="row">
+            <div class="col col-50"><button  ng-disabled="register.$invalid" class="button button-block button-calm" type="submit">sign up</button></div>
+            <div class="col col-50"><a class="button button-block button-energized" ui-sref="login">Sing in</a></div>
+        </div>
 
       </div>
     </form>

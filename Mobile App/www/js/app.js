@@ -1,18 +1,31 @@
 'use strict';
-angular.module('happyseaApp', ['ionic'])
-    .config(function($urlRouterProvider ,$stateProvider, API_URL){
+angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happysevaApp.authControllers','happysevaApp.homeControllers','happysevaApp.services'])
+    .config(function($urlRouterProvider ,$stateProvider, API_URL, $httpProvider){
         $stateProvider
             .state('splash', {
                 url: "/",
                 templateUrl: "templates/splash.html",
                 controller: 'SplashCtrl'
             })
-            .state('menu', {url: "/home", abstract: true, templateUrl: "templates/menu.html"})
-            /*.state('menu.login', {url: '/login', views: {'menuContent': {templateUrl: 'templates/login.html', controller: 'LoginCtrl'} }  })*/
             .state('login',{
                 url: "/login",
                 templateUrl: "templates/login.html",
                 controller: 'LoginCtrl'
+            })
+            .state('signup',{
+                url: "/signup",
+                templateUrl: "templates/signup.html",
+                controller: 'SignupCtrl'
+            })
+            .state('intro',{
+                url: "/intro",
+                templateUrl: "templates/intro.html",
+                controller: 'IntroCtrl'
+            })
+            .state('menu', {
+                url: "/menu",
+                abstract: true,
+                templateUrl: "templates/menu.html"
             })
             .state('menu.home',{
                 url: "/home",
@@ -23,31 +36,66 @@ angular.module('happyseaApp', ['ionic'])
                             controller: 'HomeCtrl'
                         }
                 }
-
             })
-            .state('signup',{
-                url: "/signup",
-                templateUrl: "templates/signup.html",
-                controller: 'SignupCtrl'
+            .state('menu.servicelist',{
+                url: "/servicelist",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/servicelist.html",
+                        controller: 'ServiceListCtrl'
+                    }
+                }
             })
-            /*.state('menu.intro', {url: '/intro', views: {'menuContent': {templateUrl: 'templates/intro.html', controller: 'IntroCtrl'} }  });*/
-            .state('intro',{
-                url: "/intro",
-                templateUrl: "templates/intro.html",
-                controller: 'IntroCtrl'
+            .state('menu.appointment',{
+                url: "/appointment",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/appointment.html",
+                        controller: 'AppointmentCtrl'
+                    }
+                }
+            })
+            .state('menu.servicenow',{
+                url: "/servicenow",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/servicenow.html",
+                        controller: 'ServiceNowCtrl'
+                    }
+                }
+            })
+            .state('menu.servicemap',{
+                url: "/servicemap",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/servicemap.html",
+                        controller: 'ServiceMapCtrl'
+                    }
+                }
+            })
+            .state('menu.thankyou',{
+                url: "/thankyou",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/thankyou.html",
+                        controller: 'ThankyouCtrl'
+                    }
+                }
             });
+
+       // $httpProvider.interceptors.push('authInterceptor');
         $urlRouterProvider.otherwise('/');
     })
     .constant('API_URL','http://localhost/api')
-    .run(function($rootScope, $state, $window, $ionicPlatform){
+    .run(function($rootScope, $state, $window, $ionicPlatform ){
         $ionicPlatform.ready(function() {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs).
-            // The reason we default this to hidden is that native apps don't usually show an accessory bar, at
-            // least on iOS. It's a dead giveaway that an app is using a Web View. However, it's sometimes
-            // useful especially with forms, though we would prefer giving the user a little more room
-            // to interact with the app.
-           /* if(window.cordova && window.cordova.plugins.Keyboard) {
+
+            if(window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
             if(window.StatusBar) {
@@ -55,7 +103,7 @@ angular.module('happyseaApp', ['ionic'])
                 // remove the status bar on iOS or change it to use white instead of dark colors.
                 StatusBar.styleDefault();
 
-            }*/
+            }
 
         });
 
