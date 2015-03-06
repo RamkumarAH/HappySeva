@@ -22,25 +22,29 @@ angular.module('happysevaApp.services',[])
     })
     .service('mainService', function (API_URL, $state){
         var ServiceList= '[{"Category": "Home","Services": ["Cleaning","Nanny","Plumber","Gardenning","Electrician","Carpenter","Mason","Repairs","Cooks","Maid","Furnishing","Tailoring","Driver","Laundry & Ironing","Painting","Pest Control"]},{"Category": "Office","Services": ["Office Supplies","Office Maintenance","Office Accounting","Office Secretarial","Courier - Last Mile","Office Furnishing"]},{"Category": "Security","Services": ["Child Security (school group)","Women Security (office group)","Home Security","Guard Services","Office Security","Firedorm","Online Security (specailized)"]},{"Category": "Citizen","Services": ["Bangalore One","Companion Services","E-Governance","Saloon Services","e-facilitation"]},{"Category": "Medical","Services": ["Ambulance","Diagnostics","Clinical Services","Pharma/Chemists","Ayurveda"]},{"Category": "Recreation","Services": ["Sports","Library","Gym","Yoga","Arts","Events","Kids"]}]';
+        var ServiceList1 = '[{"Category": "Home","Services": [{"name":"Cleaning","status":"yes"},{"name":"Nanny","status":"yes"},{"name":"Plumber","status":"no"},{"name":"Gardenning","status":"no"},{"name":"Electrician","status":"no"},{"name":"Carpenter","status":"no"},{"name":"Mason","status":"no"},{"name":"Repairs","status":"no"},{"name":"Cooks","status":"no"},{"name":"Maid","status":"no"},{"name":"Furnishing","status":"no"},{"name":"Tailoring","status":"no"},{"name":"Driver","status":"no"},{"name":"Laundry & Ironing","status":"no"},{"name":"Painting","status":"no"},{"name":"Pest Control","status":"yes"}]},{"Category": "Office","Services": [{"name":"Office Supplies","status":"no"},{"name":"Office Maintenance","status":"no"},{"name":"Office Accounting","status":"yes"},{"name":"Office Secretarial","status":"yes"},{"name":"Courier - Last Mile","status":"no"},{"name":"Office Furnishing","status":"yes"}]},{"Category": "Security","Services": [{"name":"Child Security (school group)","status":"no"},{"name":"Women Security (office group)","status":"no"},{"name":"Home Security","status":"no"},{"name":"Guard Services","status":"no"},{"name":"Office Security","status":"no"},{"name":"Firedorm","status":"no"},{"name":"Online Security (specailized)","status":"no"}]},{"Category": "Citizen","Services": [{"name":"Bangalore One","status":"no"},{"name":"Companion Services","status":"yes"},{"name":"E-Governance","status":"no"},{"name":"Saloon Services","status":"no"},{"name":"e-facilitation","status":"no"}]},{"Category": "Medical","Services": [{"name":"Ambulance","status":"no"},{"name":"Diagnostics","status":"yes"},{"name":"Clinical Services","status":"yes"},{"name":"Pharma/Chemists","status":"yes"},{"name":"Ayurveda","status":"no"}]},{"Category": "Recreation","Services": [{"name":"Sports","status":"yes"},{"name":"Library","status":"yes"},{"name":"Gym","status":"no"},{"name":"Yoga","status":"no"},{"name":"Events","status":"no"},{"name":"Kids","status":"no"},{"name":"Arts","status":"no"}]}]';
         function ListSuccessful(res) {
 
 
         }
+
         this.category ='';
         this.currentServiceName ='';
         this.setCategory = function(cat){
-            this.category =cat;
+            localStorage.setItem("currentCategory", cat);
+            this.category = localStorage.getItem("currentCategory");
 
         }
         this.setServiceName = function(name){
-            this.currentServiceName =name;
-            console.log(this.currentServiceName);
+            localStorage.setItem("currentServiceName", name);
+            this.currentServiceName = localStorage.getItem("currentServiceName");
+
         }
         this.subServices = function (category){
             /*return $http.post(API_URL+'subservices',{
                 category:category
             }).success(ListSuccessful);*/
-            var DataList =JSON.parse(ServiceList)
+            var DataList =JSON.parse(ServiceList1)
            // console.log(DataList);
            // console.log(category);
             for(var i=0;i<DataList.length;i++){
@@ -51,4 +55,49 @@ angular.module('happysevaApp.services',[])
             }
 
         }
-    });
+    })
+    .service('CordovaNetwork', ['$ionicPlatform', '$q', function($ionicPlatform, $q) {
+        // Get Cordova's global Connection object or emulate a smilar one
+        var Connection = window.Connection || {
+            "CELL"     : "cellular",
+            "CELL_2G"  : "2g",
+            "CELL_3G"  : "3g",
+            "CELL_4G"  : "4g",
+            "ETHERNET" : "ethernet",
+            "NONE"     : "none",
+            "UNKNOWN"  : "unknown",
+            "WIFI"     : "wifi"
+        };
+
+        var asyncGetConnection = function () {
+            var q = $q.defer();
+            $ionicPlatform.ready(function () {
+                if(navigator.connection) {
+                    q.resolve(navigator.connection);
+                } else {
+                    q.reject('navigator.connection is not defined');
+                }
+            });
+            return q.promise;
+        };
+
+        return {
+            isOnline: function () {
+                return asyncGetConnection().then(function(networkConnection) {
+                    var isConnected = false;
+
+                    switch (networkConnection.type) {
+                        case Connection.ETHERNET:
+                        case Connection.WIFI:
+                        case Connection.CELL_2G:
+                        case Connection.CELL_3G:
+                        case Connection.CELL_4G:
+                        case Connection.CELL:
+                            isConnected = true;
+                            break;
+                    }
+                    return isConnected;
+                });
+            }
+        };
+    }]);

@@ -1,46 +1,57 @@
 
-<ion-view cache-view="false">
-    <ion-nav-bar class="bar-calm">
+<ion-view cache-view="false" view-title="<i class='icon custom-Icon2 ion-android-contacts'></i><span class='bar-tilte'>About us</span>">
+    <ion-nav-bar class="bar-calm" align-title="left">
 
-        <ion-nav-back-button>
-        </ion-nav-back-button>
+
         <ion-nav-buttons side="right">
-            <button class="button button-positive button-clear" ng-click="leftButtons()">{{leftButton}}</button>
+            <button class="button button-icon icon ion-navicon"></button>
         </ion-nav-buttons>
 
     </ion-nav-bar>
-    <ion-slide-box on-slide-changed="slideChanged(index)">
+    <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)" pager-click="pagerClick($index)">
         <ion-slide>
-            <h3>Thank you for choosing the Awesome App!</h3>
-            <div id="logo">
-                <img src="img/logo.png">
-            </div>
-            <button class="button button-calm button-small" ng-click="leftButtons()">{{leftButton}}</button>
-            <p>
-                We've worked super hard to make you happy.
-            </p>
-            <p>
-                But if you are angry, too bad.
-            </p>
-
-        </ion-slide>
-        <ion-slide>
-            <h3>Using Awesome</h3>
-
-            <div id="list">
-                <h5>Just three steps:</h5>
-                <ol>
-                    <li>Be awesome</li>
-                    <li>Stay awesome</li>
-                    <li>There is no step 3</li>
-                </ol>
+            <div class="" style="position: relative; " ng-style ="{height: contentH + 'px'}">
+                <div class="logo-center">
+                    <img src="img/signup_logo.png"/>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                    </div>
+                </div>
+                <div><a class="button button-clear button-calm" ui-sref="login" >Skip</a></div>
             </div>
         </ion-slide>
         <ion-slide>
-            <h3>Any questions?</h3>
-            <p>
-                Too bad!
-            </p>
+            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
+                <div class="tour1" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
+                <div class="tour2" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
+                <div class="tour3" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
+                <div class="tour4" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
+                <div class="tour5" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
+                <div class="tour6" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
+            </div>
         </ion-slide>
     </ion-slide-box>
 </ion-view>

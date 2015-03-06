@@ -17,6 +17,12 @@
   https://twitter.com/benjsperry  https://twitter.com/ionicframework
   MIT License: https://github.com/driftyco/ionicons
 */
+
+@font-face {
+  font-family: "Montserrat-custom";
+  src: url("../fonts/custom/Montserrat-Regular.ttf") format('opentype');
+  font-weight: 400;
+  font-style: normal; }
 @font-face {
   font-family: "Ionicons";
   src: url("../fonts/ionicons.eot?v=1.5.2");

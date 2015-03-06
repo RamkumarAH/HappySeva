@@ -16,22 +16,40 @@ angular.module('happysevaApp.homeControllers',[])
     .controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, mainService) {
         $scope.leftButton = "ion-home";
         $scope.subService = function(category){
+
             mainService.setCategory(category);
             $state.go('menu.servicelist');
+        }
+        $scope.pagerClick = function(index){
+            alert(index);
         }
 
     })
     //ServiceListCtrl
-    .controller('ServiceListCtrl', function ($scope, $state, mainService) {
+    .controller('ServiceListCtrl', function ($scope, $state, mainService, $ionicPopup) {
         $scope.service={
             category:'',
             list:''
         }
+        $scope.showAlert = function(name) {
+            var alertPopup = $ionicPopup.alert({
+                title: name+ ' Service',
+                template: name + ' service is comming soon'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+            });
+        };
         $scope.service.category = mainService.category;
         $scope.service.list = mainService.subServices($scope.service.category)
-        $scope.gotoService = function (name) {
-            mainService.setServiceName(name);
-            $state.go('menu.appointment');
+        $scope.gotoService = function (name, status) {
+            if(status =='no'){
+                $scope.showAlert(name);
+            }else{
+                mainService.setServiceName(name);
+                $state.go('menu.appointment');
+            }
+
         }
 
     })
@@ -43,6 +61,10 @@ angular.module('happysevaApp.homeControllers',[])
     })
     .controller('MenuCtrl', function ($scope, $state) {
 
+    })
+
+    .controller('AboutusCtrl', function($scope, $state){
+        $scope.contentH = window.innerHeight-64;
     })
     .controller('AppointmentCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService){
        // $state.go($state.current, {}, {reload: true});

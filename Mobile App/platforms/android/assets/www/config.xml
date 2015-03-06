@@ -13,31 +13,61 @@
     <preference name="SplashScreen" value="splash" />
     <preference name="splashScreenDelay" value="10000" />
     <preference name="AutoHideSplashScreen" value="false" />
-<!--
-    <feature name="SplashScreen">
-        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
-    </feature>-->
-
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
     <platform name="android">
-        <icon src="www/res/icon/android/icon-36-ldpi.png" density="ldpi" />
-        <icon src="www/res/icon/android/icon-48-mdpi.png" density="mdpi" />
-        <icon src="www/res/icon/android/icon-72-hdpi.png" density="hdpi" />
-        <icon src="www/res/icon/android/icon-96-xhdpi.png" density="xhdpi" />
-     </platform>
-    <platform name="android">
-        <splash src="www/res/screen/android/screen-hdpi-landscape.png" density="land-hdpi"/>
-        <splash src="www/res/screen/android/screen-ldpi-landscape.png" density="land-ldpi"/>
-        <splash src="www/res/screen/android/screen-mdpi-landscape.png" density="land-mdpi"/>
-        <splash src="www/res/screen/android/screen-xhdpi-landscape.png" density="land-xhdpi"/>
-
-        <splash src="www/res/screen/android/screen-hdpi-portrait.png" density="port-hdpi"/>
-        <splash src="www/res/screen/android/screen-ldpi-portrait.png" density="port-ldpi"/>
-        <splash src="www/res/screen/android/screen-mdpi-portrait.png" density="port-mdpi"/>
-        <splash src="www/res/screen/android/screen-xhdpi-portrait.png" density="port-xhdpi"/>
+        <icon density="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
+        <icon density="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
+        <icon density="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
+        <icon density="xhdpi" src="www/res/icon/android/icon-96-xhdpi.png" />
     </platform>
+    <platform name="android">
+        <splash density="land-hdpi" src="www/res/screen/android/screen-hdpi-landscape.png" />
+        <splash density="land-ldpi" src="www/res/screen/android/screen-ldpi-landscape.png" />
+        <splash density="land-mdpi" src="www/res/screen/android/screen-mdpi-landscape.png" />
+        <splash density="land-xhdpi" src="www/res/screen/android/screen-xhdpi-landscape.png" />
+        <splash density="port-hdpi" src="www/res/screen/android/screen-hdpi-portrait.png" />
+        <splash density="port-ldpi" src="www/res/screen/android/screen-ldpi-portrait.png" />
+        <splash density="port-mdpi" src="www/res/screen/android/screen-mdpi-portrait.png" />
+        <splash density="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
+    </platform>
+    <feature name="Keyboard">
+        <param name="id" value="com.ionic.keyboard" />
+    </feature>
+    <feature name="Battery">
+        <param name="id" value="org.apache.cordova.battery-status" />
+    </feature>
+    <feature name="Camera">
+        <param name="id" value="org.apache.cordova.camera" />
+    </feature>
+    <feature name="Console">
+        <param name="id" value="org.apache.cordova.console" />
+    </feature>
+    <feature name="Device">
+        <param name="id" value="org.apache.cordova.device" />
+    </feature>
+    <feature name="Device Motion">
+        <param name="id" value="org.apache.cordova.device-motion" />
+    </feature>
+    <feature name="Device Orientation">
+        <param name="id" value="org.apache.cordova.device-orientation" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="id" value="org.apache.cordova.geolocation" />
+    </feature>
+    <feature name="Media">
+        <param name="id" value="org.apache.cordova.media" />
+    </feature>
+    <feature name="Capture">
+        <param name="id" value="org.apache.cordova.media-capture" />
+    </feature>
+    <feature name="Network Information">
+        <param name="id" value="org.apache.cordova.network-information" />
+    </feature>
+    <feature name="Splashscreen">
+        <param name="id" value="org.apache.cordova.splashscreen" />
+    </feature>
 </widget>

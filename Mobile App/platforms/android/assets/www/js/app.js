@@ -37,6 +37,17 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
                         }
                 }
             })
+
+            .state('menu.about',{
+                url: "/about",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/about.html",
+                        controller: 'AboutusCtrl'
+                    }
+                }
+            })
             .state('menu.servicelist',{
                 url: "/servicelist",
                 views:{

@@ -1,7 +1,16 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
-
+@font-face {
+    font-family: "customfont";
+    src: url("../lib/fonts/custom/Montserrat-Regular.ttf") format('opentype');
+    font-weight: 400;
+    font-style: normal; }
+@font-face {
+    font-family: "customfont1";
+    src: url("../lib/fonts/custom1/Existence-Light.ttf") format('opentype');
+    font-weight: 400;
+    font-style: normal; }
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -18,7 +27,7 @@ body {
             color-stop(0.51, #E4E4E4)
     );
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: "customfont", sans-serif;
     font-size:12px;
     height:100%;
     margin:0px;
@@ -105,7 +114,7 @@ h1 {
     background-color: #fff;
     text-align: center;
 
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: "customfont", sans-serif;
     font-weight: 300;
 }
 
@@ -140,7 +149,7 @@ h1 {
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
 
     color: #ffffff;
-
+    height: 22px;
 }
 .menubg{
     background-color: #0d94ad;
@@ -160,11 +169,11 @@ body {
     -o-background-size: auto, cover;
     background-size: auto, cover;
     background-image: url(../img/tr_pt_3.png), url(../img/9.jpg);
-    font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+    font-family: "customfont", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    font-family: "customfont", sans-serif;
 }
 
 /* Circle Menu(cm) Container */
@@ -570,7 +579,7 @@ ul.cm-small-circle li:nth-child(6){
 
 a span{ white-space: nowrap;}
 .bar .title.title-left {
-    left: 25px !important;
+    left: 0px !important;
 }
 .listService{}
 .listService li{
@@ -592,9 +601,132 @@ a span{ white-space: nowrap;}
     color: #ffffff;
     border: 1px solid #09a3bf;
 }
+.listService li a.active-no{
+    border: 1px solid #244950;
+    color: #6c6c6c;
+}
+.listService li a.active-yes{
+    color: #ffffff;
+    border: 1px solid #09a3bf;
+}
 input[type="search"]{
     color: #000000;
 }
 .customcolor{
     color: #00c0e3;
+}
+.slider-slide{
+    background: #2d2d2d;
+    color: #00c0e3;
+}
+.logo-center{
+    text-align: center;
+}
+.slider-pager .slider-pager-page.active {
+    -webkit-transition: opacity 0.4s ease-in;
+    transition: opacity 0.4s ease-in;
+    opacity: 1;
+    color: #00c0e3;
+}
+.slider-pager .slider-pager-page {
+    display: inline-block;
+    margin: 0px 3px;
+    width: 20px;
+    color: #fff;
+    text-decoration: none;
+    opacity: 1;
+}
+.ion-record:before {
+    content: "\f209";
+}
+.tour1{
+    background: url(../img/HappySevaApp_tour1.jpg);
+    background-size: 98% 98%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.tour2{
+    background: url(../img/HappySevaApp_tour2.jpg);
+    background-size: 98% 98%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.tour3{
+    background: url(../img/HappySevaApp_tour3.jpg);
+    background-size: 98% 98%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.tour4{
+    background: url(../img/HappySevaApp_tour4.jpg);
+    background-size: 98% 98%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.tour5{
+    background: url(../img/HappySevaApp_tour5.jpg);
+    background-size: 98% 98%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.tour6{
+    background: url(../img/HappySevaApp_tour6.jpg);
+    background-size: 98% 98%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.custom-Icon{
+
+    width: 38px;
+    height: 38px;
+    display: inherit;
+
+
+    margin-bottom: 4px;
+
+}
+.custom-Icon1{
+
+    width: 32px;
+    height: 32px;
+    display: inherit;
+    margin-bottom: 4px;
+    display: inline-block;
+    position: absolute;
+    top: 6%;
+}
+.bar-tilte{
+    position: absolute;
+    left: 20px;
+}
+.custom-Home{
+    background: url(../img/home_96x96.png) center no-repeat;
+    background-size: 100%;
+}
+.custom-Office{
+    background: url(../img/office_96x96.png) center no-repeat;
+    background-size: 100%;
+}
+.custom-Security{
+    background: url(../img/security_96x96.png) center no-repeat;
+    background-size: 100%;
+}
+.custom-Citizen{
+    background: url(../img/citizen_96x96.png) center no-repeat;
+    background-size: 100%;
+}
+.custom-Medical{
+    background: url(../img/medical_96x96.png) center no-repeat;
+    background-size: 100%;
+}
+.custom-Recreation{
+    background: url(../img/recreational_96x96.png) center no-repeat;
+    background-size: 100%;
+}
+
+.custom-Icon2:before {
+    font-size: 32px;
+    position: absolute;
+    left: -23px;
+    top: 4px;
 }
