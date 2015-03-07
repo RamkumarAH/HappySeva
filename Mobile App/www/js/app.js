@@ -1,6 +1,6 @@
 'use strict';
 angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happysevaApp.authControllers','happysevaApp.homeControllers','happysevaApp.services'])
-    .config(function($urlRouterProvider ,$stateProvider, API_URL, $httpProvider){
+    .config(function($urlRouterProvider ,$stateProvider, API_URL, $httpProvider, $compileProvider){
         $stateProvider
             .state('splash', {
                 url: "/",
@@ -101,11 +101,14 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
 
        // $httpProvider.interceptors.push('authInterceptor');
         $urlRouterProvider.otherwise('/');
+
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
     })
     .constant('API_URL','http://localhost/api')
-    .run(function($rootScope, $state, $window, $ionicPlatform ){
-        $ionicPlatform.ready(function() {
+    .run(function($rootScope, $state, $window, $ionicPlatform ,$cordovaSplashscreen){
 
+        $ionicPlatform.ready(function() {
+            $cordovaSplashscreen.splashscreen.hide();
             if(window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }

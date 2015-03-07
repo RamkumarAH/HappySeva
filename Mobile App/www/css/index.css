@@ -28,7 +28,7 @@ body {
     );
     background-attachment:fixed;
     font-family: "customfont", sans-serif;
-    font-size:12px;
+    font-size:14px;
     height:100%;
     margin:0px;
     padding:0px;
@@ -596,6 +596,7 @@ a span{ white-space: nowrap;}
     color: #6c6c6c;
     cursor: pointer;
     padding: 10% 0;
+    font-size: 16px;
 }
 .listService li:hover a:hover, .listService li a:active, .listService li a:focus{
     color: #ffffff;
@@ -729,4 +730,35 @@ input[type="search"]{
     position: absolute;
     left: -23px;
     top: 4px;
+}
+/*Map css*/
+.serviceMap{
+    color: #000000;
+}
+#infoBgwindow{
+    background: #222222;
+    color: #00c0e3;
+}
+.item-select select{
+    color: #ffffff;
+    background: #2d2d2d;
+}
+.input-label{color: #A09E9E;}
+.button-bar > .button {
+
+    border-width: 1px 1px 1px 1px;
+
+    margin: 0 0 0 5px;
+}
+.button.button-calm.button-outline{
+    color: #ffffff;
+}
+.mainInfoWindow{
+    background: #222222 !important;
+    color: #00c0e3;
+}
+.skip{
+    position: absolute;
+    right: 8%;
+    bottom: 3%;
 }

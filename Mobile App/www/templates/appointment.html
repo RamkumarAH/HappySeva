@@ -1,10 +1,18 @@
 <ion-view cache-view="false" title="<i class='icon custom-Icon2 ion-help-circled'></i><span class='bar-tilte'>{{serviceName}}</span>" hide-back-button="true" align-title="left" class="bgblack" >
     <ion-content has-header="true" has-tabs="true" padding="true">
         <div class="home">
-        <form ng-submit="makeAppointment()" name="appointment" >
+        <form  name="appointment" novalidate>
             <div class="list">
-                <label class="item item-input item-transpert">
-                    <input type="text" placeholder="Name:" ng-model="name" name="name" required>
+                <label class="item item-input item-transpert item-select">
+                    <div class="input-label">
+                        City:
+                    </div>
+                    <select name="city">
+                        <option selected>Bangalore</option>
+                        <option >Mumbai</option>
+
+                    </select>
+
                 </label>
                 <label class="item item-input item-transpert">
                     <input type="text" placeholder="Area:" ng-model="area" name="area" required>
@@ -23,14 +31,19 @@
                     <input type="text" placeholder="Describe Problem:" ng-model="problem" name="problem" required>
                 </label>
                 <label class="item item-input item-transpert">
-                    <input type="text" placeholder="Upload image:" ng-model="makeimage" name="makeimage" required>
+                    <span class="input-label">Upload Image: {{pic}}
+                    <button ng-click="getPhoto()" style="display: inline-block; position: absolute;right: 2%;cursor: pointer" class="text-right">
+                        <i class="ion-archive "></i></button>
+                        </span>
+
                 </label>
-                <label class="item item-input item-transpert">
-                    <input type="datetime-local"  placeholder="Appointment time:" ng-model="appointmenttime" name="appointmenttime"  required>
-                </label>
+                <img ng-src="{{lastPhoto}}" style="max-width: 100%">
+                <!--<label class="item item-input item-transpert">
+                    <input type="date"  placeholder="Appointment time:" ng-model="appointmenttime" name="appointmenttime"  required>
+                </label>-->
                 <div class="button-bar">
-                    <button class="button button-full button-calm" type="submit">Make Appointment</button>
-                    <a class="button button-full button-energized" ui-sref="menu.servicemap">Service Now</a>
+                    <button class="button button-outline button-calm" type="submit" ng-click="makeAppointment()">Service Later</button>
+                    <a class="button button-outline button-calm" ui-sref="menu.servicemap">Service Now</a>
                 </div>
             </div>
         </form>

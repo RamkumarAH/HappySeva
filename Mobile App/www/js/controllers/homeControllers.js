@@ -34,7 +34,7 @@ angular.module('happysevaApp.homeControllers',[])
         $scope.showAlert = function(name) {
             var alertPopup = $ionicPopup.alert({
                 title: name+ ' Service',
-                template: name + ' service is comming soon'
+                template: name + ' service may start soon'
             });
             alertPopup.then(function(res) {
                 console.log('Thank you for not eating my delicious ice cream cone');
@@ -66,7 +66,7 @@ angular.module('happysevaApp.homeControllers',[])
     .controller('AboutusCtrl', function($scope, $state){
         $scope.contentH = window.innerHeight-64;
     })
-    .controller('AppointmentCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService){
+    .controller('AppointmentCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService, Camera){
        // $state.go($state.current, {}, {reload: true});
         $scope.leftButton = "ion-gear-b";
         $scope.serviceName = mainService.currentServiceName;
@@ -74,9 +74,29 @@ angular.module('happysevaApp.homeControllers',[])
         $scope.appointmenttime = date;
         $scope.makeAppointment = function(){
             console.log('app is done');
-            $state.go('menu.thankyou');
-        }
+            $state.go('menu.servicenow');
+        };
+        $scope.lastPhoto='';
+        $scope.getPhoto = function(){
+            console.log('upload img');
+            var options = {
+                quality: 45,
+                targetWidth: 1000,
+                targetHeight: 1000,
+                saveToPhotoAlbum: false,
+                allowEdit : true
+                /*sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
+                popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)*/
 
+            };
+            Camera.getPicture().then(function (imageURI) {
+                console.log(imageURI);
+                $scope.lastPhoto =  imageURI;
+            }, function (err) {
+                console.err(err);
+            }, options);
+
+        };
     })
     .controller('ServiceNowCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService){
         $scope.serviceName = mainService.currentServiceName;
@@ -85,34 +105,44 @@ angular.module('happysevaApp.homeControllers',[])
         }
 
     })
-    .controller('ServiceMapCtrl',function($scope, $state, $ionicPlatform, $location, $ionicSideMenuDelegate, mainService){
+    .controller('ServiceMapCtrl',function($scope, $window, $state, $ionicPlatform, $location, $ionicSideMenuDelegate, mainService ,$ionicLoading, $compile){
         $scope.mapHeight = window.innerHeight-44;
         $scope.serviceName = mainService.currentServiceName;
         $scope.whoiswhere = [];
-        $scope.basel = { lat: 47.55633987116614, lon: 7.576619513223015 };
-
-
+        $scope.basel = { lat: 12.973132, lon: 77.750544 };
+        //12.973132, 77.750544
+        $scope.whoiswhere = [
+            {
+                "name": "My Marker",
+                "lat": $scope.basel.lat,
+                "lon": $scope.basel.lon,
+                "mobile":"9876543210" ,
+                "photo":'img/marker.png',
+                "license":'23123 2312 123',
+                "address":"#12 orpad cross Bangalore, India"
+            }
+        ];
         // check login code
-        $ionicPlatform.ready(function() {	navigator.geolocation.getCurrentPosition(function(position) {
-            $scope.position=position;
-            var c = position.coords;
-            $scope.gotoLocation(c.latitude, c.longitude);
-            $scope.$apply();
-        },function(e) { console.log("Error retrieving position " + e.code + " " + e.message) });
-            $scope.gotoLocation = function (lat, lon) {
-                if ($scope.lat != lat || $scope.lon != lon) {
-                    $scope.basel = { lat: lat, lon: lon };
-                    if (!$scope.$$phase) $scope.$apply("basel");
-                }
-            };
+       /* $ionicPlatform.ready(function() {	navigator.geolocation.getCurrentPosition(function(position) {
+         $scope.position=position;
+         var c = position.coords;
+         $scope.gotoLocation(c.latitude, c.longitude);
+         $scope.$apply();
+         },function(e) { console.log("Error retrieving position " + e.code + " " + e.message) });
+         $scope.gotoLocation = function (lat, lon) {
+         if ($scope.lat != lat || $scope.lon != lon) {
+         $scope.basel = { lat: lat, lon: lon };
+         if (!$scope.$$phase) $scope.$apply("basel");
+         }
+         };
 
-            // some points of interest to show on the map
-            // to be user as markers, objects should have "lat", "lon", and "name" properties
-            $scope.whoiswhere = [
-                { "name": "My Marker", "lat": $scope.basel.lat, "lon": $scope.basel.lon }
-            ];
+         // some points of interest to show on the map
+         // to be user as markers, objects should have "lat", "lon", and "name" properties
+         $scope.whoiswhere = [
+         { "name": "My Marker", "lat": $scope.basel.lat, "lon": $scope.basel.lon }
+         ];
 
-        });
+         });*/
     })
     .filter('lat', function () {
         return function (input, decimals) {

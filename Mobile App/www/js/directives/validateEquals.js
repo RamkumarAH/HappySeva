@@ -41,7 +41,70 @@ angular.module('happysevaApp')
             }
         }
     })
-    .directive("appMap", function ($window) {
+    .directive('myMap', function() {
+        // directive link function
+        var link = function(scope, element, attrs) {
+            var map, infoWindow;
+            var markers = [];
+
+            // map config
+            var mapOptions = {
+                center: new google.maps.LatLng(50, 2),
+                zoom: 4,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false
+            };
+
+            // init the map
+            function initMap() {
+                if (map === void 0) {
+                    map = new google.maps.Map(element[0], mapOptions);
+                }
+            }
+
+            // place a marker
+            function setMarker(map, position, title, content) {
+                var marker;
+                var markerOptions = {
+                    position: position,
+                    map: map,
+                    title: title,
+                    icon: 'img/marker.png'
+                };
+
+                marker = new google.maps.Marker(markerOptions);
+                markers.push(marker); // add marker to array
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    // close window if not undefined
+                    if (infoWindow !== void 0) {
+                        infoWindow.close();
+                    }
+                    // create new window
+                    var infoWindowOptions = {
+                        content: content
+                    };
+                    infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+                    infoWindow.open(map, marker);
+                });
+            }
+
+            // show the map and place some markers
+            initMap();
+
+            setMarker(map, new google.maps.LatLng(51.508515, -0.125487), 'London', 'Just some content');
+            setMarker(map, new google.maps.LatLng(52.370216, 4.895168), 'Amsterdam', 'More content');
+            setMarker(map, new google.maps.LatLng(48.856614, 2.352222), 'Paris', 'Text here');
+        };
+
+        return {
+            restrict: 'A',
+            template: '<div id="gmaps"></div>',
+            replace: true,
+            link: link
+        };
+    })
+     .directive("appMap", function ($window) {
         return {
             restrict: "E",
             replace: true,
@@ -91,8 +154,8 @@ angular.module('happysevaApp')
                 function createMap() {
                     console.log("map: create map start");
                     var mapOptions = {
-                        zoom: 13,
-                        center: new google.maps.LatLng(47.55, 7.59),
+                        zoom: 10,
+                        center: new google.maps.LatLng(12.9667, 77.5667),
                         mapTypeId: google.maps.MapTypeId.ROADMAP,
                         panControl: true,
                         zoomControl: true,
@@ -113,6 +176,7 @@ angular.module('happysevaApp')
                             return false;
                         });
                         infowindow = new google.maps.InfoWindow();
+
                     }
                 }
 
@@ -123,23 +187,41 @@ angular.module('happysevaApp')
                 // Info window trigger function
                 function onItemClick(pin, label, datum, url) {
                     // Create content
-                    var contentString = "Name: " + label + "<br />Time: " + datum;
+                    var contentString= "<div id='infoBgwindow'>"
+                    contentString += "Name: " + label + "<br />Mobile: " + datum;
+                    contentString += '</div>';
+                    console.log(contentString);
+
+                    google.maps.event.addListener(infowindow, 'domready', function() {
+                        console.log("map: hi  ");
+                       var myParent = document.getElementById("infoBgwindow").parentNode.parentNode.parentNode.parentNode;
+                        myParent.className = 'mainInfoWindow';
+                       var myChild = document.getElementById("infoBgwindow").parentNode.parentNode.parentNode.parentNode;
+                        myChild.childNodes.item(0).childNodes.item(3).className ='mainInfoWindow';
+                        myChild.childNodes.item(0).childNodes.item(2).childNodes.item(0).childNodes.item(0).className ='mainInfoWindow';
+                        myChild.childNodes.item(0).childNodes.item(2).childNodes.item(1).childNodes.item(0).className ='mainInfoWindow';
+                    });
                     // Replace our Info Window's content and position
                     infowindow.setContent(contentString);
                     infowindow.setPosition(pin.position);
                     infowindow.open(map)
+
+
+
                     google.maps.event.addListener(infowindow, 'closeclick', function() {
                         //console.log("map: info windows close listener triggered ");
                         infowindow.close();
                     });
+
+
                 }
 
                 function markerCb(marker, member, location) {
                     return function() {
-                        //console.log("map: marker listener for " + member.name);
+                        console.log("map: marker listener for " + member.name + member.mobile);
                         var href="http://maps.apple.com/?q="+member.lat+","+member.lon;
                         map.setCenter(location);
-                        onItemClick(marker, member.name, member.date, href);
+                        onItemClick(marker, member.name, member.mobile, href);
                     };
                 }
 
@@ -152,9 +234,10 @@ angular.module('happysevaApp')
                         var markers = scope.markers;
                         if (angular.isString(markers)) markers = scope.$eval(scope.markers);
                         for (var i = 0; i < markers.length; i++) {
+
                             var m = markers[i];
                             var loc = new google.maps.LatLng(m.lat, m.lon);
-                            var mm = new google.maps.Marker({ position: loc, map: map, title: m.name });
+                            var mm = new google.maps.Marker({ position: loc, map: map, title: m.name,icon: 'img/marker.png' });
                             //console.log("map: make marker for " + m.name);
                             google.maps.event.addListener(mm, 'click', markerCb(mm, m, loc));
                             currentMarkers.push(mm);
@@ -172,7 +255,7 @@ angular.module('happysevaApp')
             } // end of link:
         }; // end of return
     })
-   /* .directive('googlePlaces', function () {
+    .directive('googlePlaces', function () {
         return {
             restrict: 'E',
             replace: true,
@@ -189,4 +272,3 @@ angular.module('happysevaApp')
             }
         };
     })
-*/

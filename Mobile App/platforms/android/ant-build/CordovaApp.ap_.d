@@ -53,6 +53,7 @@ C:\developmentProject\happysea\platforms\android\assets\www\img\home.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\home_96x96.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\logo.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\logo1.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\marker.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\medical_96x96.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\office_96x96.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\recreational_96x96.png \
@@ -94,6 +95,7 @@ C:\developmentProject\happysea\platforms\android\assets\www\lib\js\angular-ui \
 C:\developmentProject\happysea\platforms\android\assets\www\lib\js\angular-ui-router \
 C:\developmentProject\happysea\platforms\android\assets\www\lib\js\animate.css \
 C:\developmentProject\happysea\platforms\android\assets\www\lib\js\bootstrap \
+C:\developmentProject\happysea\platforms\android\assets\www\lib\js\infobox.js \
 C:\developmentProject\happysea\platforms\android\assets\www\lib\js\ionic-angular.js \
 C:\developmentProject\happysea\platforms\android\assets\www\lib\js\ionic-angular.min.js \
 C:\developmentProject\happysea\platforms\android\assets\www\lib\js\ionic.bundle.js \

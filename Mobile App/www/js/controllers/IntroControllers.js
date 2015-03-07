@@ -1,11 +1,6 @@
 'use strict';
 angular.module('happysevaApp.IntroControllers',[])
     .controller('SplashCtrl', function ($scope, $state, CordovaNetwork) {
-        CordovaNetwork.isOnline().then(function(isConnected) {
-            alert(isConnected);
-        }).catch(function(err){
-            console.log(err);
-        });
         setTimeout(function() {
            $state.go('intro');
         }, 3000)
