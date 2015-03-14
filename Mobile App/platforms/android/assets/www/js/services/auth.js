@@ -21,8 +21,8 @@ angular.module('happysevaApp.services',[])
 
     })
     .service('mainService', function (API_URL, $state){
-        var ServiceList= '[{"Category": "Home","Services": ["Cleaning","Nanny","Plumber","Gardening","Electrician","Carpenter","Mason","Repairs","Cooks","Maid","Furnishing","Tailoring","Driver","Laundry & Ironing","Painting","Pest Control"]},{"Category": "Office","Services": ["Office Supplies","Office Maintenance","Office Accounting","Office Secretarial","Courier - Last Mile","Office Furnishing"]},{"Category": "Security","Services": ["Child Security (school group)","Women Security (office group)","Home Security","Guard Services","Office Security","Firedorm","Online Security (specailized)"]},{"Category": "Citizen","Services": ["Bangalore One","Companion Services","E-Governance","Saloon Services","e-facilitation"]},{"Category": "Medical","Services": ["Ambulance","Diagnostics","Clinical Services","Pharma/Chemists","Ayurveda"]},{"Category": "Recreation","Services": ["Sports","Library","Gym","Yoga","Arts","Events","Kids"]}]';
-        var ServiceList1 = '[{"Category": "Home","Services": [{"name":"Cleaning","status":"yes"},{"name":"Nanny","status":"yes"},{"name":"Furnishing","status":"yes"},{"name":"Pest Control","status":"yes"},{"name":"Plumber","status":"no"},{"name":"Gardenning","status":"no"},{"name":"Electrician","status":"no"},{"name":"Carpenter","status":"no"},{"name":"Mason","status":"no"},{"name":"Repairs","status":"no"},{"name":"Cooks","status":"no"},{"name":"Maid","status":"no"},{"name":"Tailoring","status":"no"},{"name":"Driver","status":"no"},{"name":"Laundry & Ironing","status":"no"},{"name":"Painting","status":"no"}]},{"Category": "Office","Services": [{"name":"Office Accounting","status":"yes"},{"name":"Office Secretarial","status":"yes"},{"name":"Office Furnishing","status":"yes"},{"name":"Office Supplies","status":"no"},{"name":"Office Maintenance","status":"no"},{"name":"Courier - Last Mile","status":"no"}]},{"Category": "Security","Services": [{"name":"Child Security (school group)","status":"no"},{"name":"Women Security (office group)","status":"no"},{"name":"Home Security","status":"no"},{"name":"Guard Services","status":"no"},{"name":"Office Security","status":"no"},{"name":"Firedorm","status":"no"},{"name":"Online Security (specailized)","status":"no"}]},{"Category": "Citizen","Services": [{"name":"Bangalore One","status":"no"},{"name":"Companion Services","status":"no"},{"name":"E-Governance","status":"no"},{"name":"Saloon Services","status":"no"},{"name":"e-facilitation","status":"no"}]},{"Category": "Medical","Services": [{"name":"Diagnostics","status":"yes"},{"name":"Clinical Services","status":"yes"},{"name":"Pharma/Chemists","status":"yes"},{"name":"Ayurveda","status":"no"},{"name":"Ambulance","status":"no"}]},{"Category": "Recreation","Services": [{"name":"Sports","status":"yes"},{"name":"Gym","status":"yes"},{"name":"Yoga","status":"yes"},{"name":"Kids","status":"yes"},{"name":"Events","status":"no"},{"name":"Arts","status":"no"},{"name":"Library","status":"no"}]}]';
+        var ServiceList= '[{"Category": "House","Services": ["Cleaning","Nanny","Plumber","Gardening","Electrician","Carpenter","Mason","Repairs","Cooks","Maid","Furnishing","Tailoring","Driver","Laundry & Ironing","Painting","Pest Control"]},{"Category": "Office","Services": ["Office Supplies","Office Maintenance","Office Accounting","Office Secretarial","Courier - Last Mile","Office Furnishing"]},{"Category": "Security","Services": ["Child Security (school group)","Women Security (office group)","Home Security","Guard Services","Office Security","Firedorm","Online Security (specailized)"]},{"Category": "Citizen","Services": ["Bangalore One","Companion Services","E-Governance","Saloon Services","e-facilitation"]},{"Category": "Medical","Services": ["Ambulance","Diagnostics","Clinical Services","Pharma/Chemists","Ayurveda"]},{"Category": "Recreation","Services": ["Sports","Library","Gym","Yoga","Arts","Events","Kids"]}]';
+        var ServiceList1 = '[{"Category": "House","Services": [{"name":"Cleaning","status":"yes"},{"name":"Nanny","status":"yes"},{"name":"Furnishing","status":"yes"},{"name":"Pest Control","status":"yes"},{"name":"Plumber","status":"no"},{"name":"Gardenning","status":"no"},{"name":"Electrician","status":"no"},{"name":"Carpenter","status":"no"},{"name":"Mason","status":"no"},{"name":"Repairs","status":"no"},{"name":"Cooks","status":"no"},{"name":"Maid","status":"no"},{"name":"Tailoring","status":"no"},{"name":"Driver","status":"no"},{"name":"Laundry & Ironing","status":"no"},{"name":"Painting","status":"no"}]},{"Category": "Office","Services": [{"name":"Office Accounting","status":"yes"},{"name":"Office Secretarial","status":"yes"},{"name":"Office Furnishing","status":"yes"},{"name":"Office Supplies","status":"no"},{"name":"Office Maintenance","status":"no"},{"name":"Courier - Last Mile","status":"no"}]},{"Category": "Security","Services": [{"name":"Child Security (school group)","status":"no"},{"name":"Women Security (office group)","status":"no"},{"name":"Home Security","status":"no"},{"name":"Guard Services","status":"no"},{"name":"Office Security","status":"no"},{"name":"Firedorm","status":"no"},{"name":"Online Security (specailized)","status":"no"}]},{"Category": "Citizen","Services": [{"name":"Bangalore One","status":"no"},{"name":"Companion Services","status":"no"},{"name":"E-Governance","status":"no"},{"name":"Saloon Services","status":"no"},{"name":"e-facilitation","status":"no"}]},{"Category": "Medical","Services": [{"name":"Diagnostics","status":"yes"},{"name":"Clinical Services","status":"yes"},{"name":"Pharma/Chemists","status":"yes"},{"name":"Ayurveda","status":"no"},{"name":"Ambulance","status":"no"}]},{"Category": "Recreation","Services": [{"name":"Sports","status":"yes"},{"name":"Gym","status":"yes"},{"name":"Yoga","status":"yes"},{"name":"Kids","status":"yes"},{"name":"Events","status":"no"},{"name":"Arts","status":"no"},{"name":"Library","status":"no"}]}]';
         function ListSuccessful(res) {
 
 
@@ -131,4 +131,95 @@ angular.module('happysevaApp.services',[])
             }
         };
 
+    }])
+    .factory('$cordovaNetwork', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
+
+        var offlineEvent = function () {
+            var networkState = navigator.connection.type;
+            $timeout(function () {
+                $rootScope.$broadcast('$cordovaNetwork:offline', networkState);
+            });
+        };
+
+        var onlineEvent = function () {
+            var networkState = navigator.connection.type;
+            $timeout(function () {
+                $rootScope.$broadcast('$cordovaNetwork:online', networkState);
+            });
+        };
+
+        document.addEventListener("deviceready", function () {
+            if (navigator.connection) {
+                document.addEventListener("offline", offlineEvent, false);
+                document.addEventListener("online", onlineEvent, false);
+            }
+        });
+
+        return {
+            getNetwork: function () {
+                return navigator.connection.type;
+            },
+
+            isOnline: function () {
+                var networkState = navigator.connection.type;
+                return networkState !== Connection.UNKNOWN && networkState !== Connection.NONE;
+            },
+
+            isOffline: function () {
+                var networkState = navigator.connection.type;
+                return networkState === Connection.UNKNOWN || networkState === Connection.NONE;
+            },
+
+            clearOfflineWatch: function () {
+                document.removeEventListener("offline", offlineEvent);
+                $rootScope.$$listeners["$cordovaNetwork:offline"] = [];
+            },
+
+            clearOnlineWatch: function () {
+                document.removeEventListener("online", offlineEvent);
+                $rootScope.$$listeners["$cordovaNetwork:online"] = [];
+            }
+        };
+    }])
+    .factory('$cordovaGeolocation', ['$q', function ($q) {
+
+        return {
+            getCurrentPosition: function (options) {
+                var q = $q.defer();
+
+                navigator.geolocation.getCurrentPosition(function (result) {
+                    q.resolve(result);
+                }, function (err) {
+                    q.reject(err);
+                }, options);
+
+                return q.promise;
+            },
+
+            watchPosition: function (options) {
+                var q = $q.defer();
+
+                var watchID = navigator.geolocation.watchPosition(function (result) {
+                    q.notify(result);
+                }, function (err) {
+                    q.reject(err);
+                }, options);
+
+                q.promise.cancel = function () {
+                    navigator.geolocation.clearWatch(watchID);
+                };
+
+                q.promise.clearWatch = function (id) {
+                    navigator.geolocation.clearWatch(id || watchID);
+                };
+
+                q.promise.watchID = watchID;
+
+                return q.promise;
+            },
+
+            clearWatch: function (watchID) {
+                return navigator.geolocation.clearWatch(watchID);
+            }
+        };
     }]);

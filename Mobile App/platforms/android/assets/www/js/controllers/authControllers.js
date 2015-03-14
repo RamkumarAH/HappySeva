@@ -1,8 +1,15 @@
 'use strict';
 angular.module('happysevaApp.authControllers',[])
-    .controller('LoginCtrl', function ($scope, $state) {
+    .controller('LoginCtrl', function ($scope, $state, $cordovaNetwork , $rootScope) {
         $scope.tryLogin = function(){
-            $state.go('menu.home');
+            var type = $cordovaNetwork.getNetwork();
+            var isOnline = $cordovaNetwork.isOnline();
+            if(isOnline){
+                $state.go('menu.home');
+            }else{
+                $state.go('error');
+            }
+
         }
     })
 

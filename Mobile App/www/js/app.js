@@ -17,6 +17,11 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
                 templateUrl: "templates/signup.html",
                 controller: 'SignupCtrl'
             })
+            .state('error',{
+                url: "/error",
+                templateUrl: "templates/Error.html",
+                controller: 'ErrorCtrl'
+            })
             .state('intro',{
                 url: "/intro",
                 templateUrl: "templates/intro.html",
@@ -105,7 +110,7 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
     })
     .constant('API_URL','http://localhost/api')
-    .run(function($rootScope, $state, $window, $ionicPlatform ,$cordovaSplashscreen){
+    .run(function($rootScope, $state, $window, $ionicPlatform ,$cordovaSplashscreen, $ionicPopup ,$cordovaNetwork){
 
         $ionicPlatform.ready(function() {
             $cordovaSplashscreen.splashscreen.hide();
@@ -118,6 +123,8 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
                 StatusBar.styleDefault();
 
             }
+
+
 
         });
 

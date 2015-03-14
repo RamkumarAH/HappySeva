@@ -43,14 +43,9 @@ C:\developmentProject\happysea\platforms\android\assets\www\res \
 C:\developmentProject\happysea\platforms\android\assets\www\templates \
 C:\developmentProject\happysea\platforms\android\assets\www\css\index.css \
 C:\developmentProject\happysea\platforms\android\assets\www\img\citizen_96x96.png \
-C:\developmentProject\happysea\platforms\android\assets\www\img\HappySevaApp_tour1.jpg \
-C:\developmentProject\happysea\platforms\android\assets\www\img\HappySevaApp_tour2.jpg \
-C:\developmentProject\happysea\platforms\android\assets\www\img\HappySevaApp_tour3.jpg \
-C:\developmentProject\happysea\platforms\android\assets\www\img\HappySevaApp_tour4.jpg \
-C:\developmentProject\happysea\platforms\android\assets\www\img\HappySevaApp_tour5.jpg \
-C:\developmentProject\happysea\platforms\android\assets\www\img\HappySevaApp_tour6.jpg \
 C:\developmentProject\happysea\platforms\android\assets\www\img\home.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\home_96x96.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\HSL.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\logo.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\logo1.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\marker.png \
@@ -59,6 +54,12 @@ C:\developmentProject\happysea\platforms\android\assets\www\img\office_96x96.png
 C:\developmentProject\happysea\platforms\android\assets\www\img\recreational_96x96.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\security_96x96.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\signup_logo.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\tour1.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\tour2.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\tour3.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\tour4.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\tour5.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\tour6.png \
 C:\developmentProject\happysea\platforms\android\assets\www\js\app.js \
 C:\developmentProject\happysea\platforms\android\assets\www\js\controllers \
 C:\developmentProject\happysea\platforms\android\assets\www\js\directives \
@@ -628,6 +629,7 @@ C:\developmentProject\happysea\platforms\android\assets\www\res\screen\webos\scr
 C:\developmentProject\happysea\platforms\android\assets\www\res\screen\windows-phone\screen-portrait.jpg \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\about.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\appointment.html \
+C:\developmentProject\happysea\platforms\android\assets\www\templates\Error.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\home.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\intro.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\login.html \

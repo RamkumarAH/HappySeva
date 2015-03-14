@@ -13,16 +13,32 @@ angular.module('happysevaApp.homeControllers',[])
         };
 
     })
-    .controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, mainService) {
+    .controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, mainService, $cordovaGeolocation , $rootScope) {
         $scope.leftButton = "ion-home";
         $scope.subService = function(category){
-
+            $scope.setPosition();
             mainService.setCategory(category);
             $state.go('menu.servicelist');
-        }
+        };
         $scope.pagerClick = function(index){
             alert(index);
-        }
+        };
+        $scope.setPosition = function(){
+            var posOptions = {timeout: 10000, enableHighAccuracy: false};
+            $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
+                    var lat  = position.coords.latitude;
+                    var long = position.coords.longitude;
+                   // alert(lat + ' '+ long);
+                    localStorage.setItem("currentLat", lat);
+                    localStorage.setItem("currentLong", long);
+                }, function(err) {
+                    // error
+                });
+        };
+
+
 
     })
     //ServiceListCtrl
@@ -34,7 +50,7 @@ angular.module('happysevaApp.homeControllers',[])
         $scope.showAlert = function(name) {
             var alertPopup = $ionicPopup.alert({
                 title: name+ ' Service',
-                template: name + ' service may start soon'
+                template: 'This service will begin shortly'
             });
             alertPopup.then(function(res) {
                 console.log('Thank you for not eating my delicious ice cream cone');
@@ -53,6 +69,12 @@ angular.module('happysevaApp.homeControllers',[])
         }
 
     })
+    //ErrorCtrl
+    .controller('ErrorCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService){
+        $scope.contentH = window.innerHeight-44;
+
+
+    })
     //ThankyouCtrl
     .controller('ThankyouCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService){
         $scope.contentH = window.innerHeight-44;
@@ -65,9 +87,19 @@ angular.module('happysevaApp.homeControllers',[])
 
     .controller('AboutusCtrl', function($scope, $state){
         $scope.contentH = window.innerHeight-64;
+        $scope.skip = 'Skip';
+        $scope.slideHasChanged= function($index){
+            if($index == 6){
+                $scope.skip = 'Done';
+            }else{
+                $scope.skip = 'Skip';
+            }
+
+        }
     })
     .controller('AppointmentCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService, Camera){
        // $state.go($state.current, {}, {reload: true});
+
         $scope.leftButton = "ion-gear-b";
         $scope.serviceName = mainService.currentServiceName;
         var date = new Date();
@@ -105,23 +137,54 @@ angular.module('happysevaApp.homeControllers',[])
         }
 
     })
-    .controller('ServiceMapCtrl',function($scope, $window, $state, $ionicPlatform, $location, $ionicSideMenuDelegate, mainService ,$ionicLoading, $compile){
-        $scope.mapHeight = window.innerHeight-44;
-        $scope.serviceName = mainService.currentServiceName;
-        $scope.whoiswhere = [];
-        $scope.basel = { lat: 12.973132, lon: 77.750544 };
-        //12.973132, 77.750544
-        $scope.whoiswhere = [
-            {
-                "name": "My Marker",
-                "lat": $scope.basel.lat,
-                "lon": $scope.basel.lon,
-                "mobile":"9876543210" ,
-                "photo":'img/marker.png',
-                "license":'23123 2312 123',
-                "address":"#12 orpad cross Bangalore, India"
-            }
-        ];
+    .controller('ServiceMapCtrl',function($scope, $window, $state, $ionicPlatform, $location, $ionicSideMenuDelegate, mainService ,$ionicLoading, $compile, $cordovaNetwork, $rootScope, $cordovaGeolocation){
+
+        var isOnline = $cordovaNetwork.isOnline();
+
+        if(isOnline){
+            var lat, long;
+            lat = localStorage.getItem("currentLat");
+            long = localStorage.getItem("currentLong");
+            $scope.mapHeight = window.innerHeight-44;
+            $scope.serviceName = mainService.currentServiceName;
+            $scope.whoiswhere = [];
+            var posOptions = {timeout: 10000, enableHighAccuracy: false};
+            $scope.basel = { lat: 12.973132, lon: 77.750544 };
+            //12.973132, 77.750544
+            $scope.zoom = 6;
+            //alert(lat + ' '+ long);
+            $scope.center ={latitude: lat, longitude: long};
+            $scope.current ={lat: lat, lon: long};
+            $scope.whoiswhere = [
+                {
+                    "name": "Second Marker",
+                    "lat": $scope.basel.lat,
+                    "lon": $scope.basel.lon,
+                    "mobile":"9876543210" ,
+                    "photo":'img/marker.png',
+                    "license":'23123 2312 123',
+                    "address":"#12 orpad cross Bangalore, India"
+                },
+                {
+                    "name": "Current Position",
+                    "lat": $scope.current.lat,
+                    "lon": $scope.current.lon,
+                    "mobile":"9876543210" ,
+                    "photo":'img/marker.png',
+                    "license":'23123 2312 123',
+                    "address":"#12 orpad cross Bangalore, India"
+                }
+            ];
+
+
+
+
+
+
+
+        }else{
+            $state.go('error');
+        }
         // check login code
        /* $ionicPlatform.ready(function() {	navigator.geolocation.getCurrentPosition(function(position) {
          $scope.position=position;
