@@ -1,21 +1,23 @@
 'use strict';
 
 angular.module('happysevaApp.services',[])
-    .service('auth', function (API_URL, $http, authToken, $state, $window, $q) {
+    .service('auth', function (API_URL, $http, $state, $window, $q) {
         function authSuccessful(res) {
-            authToken.setToken(res.token);
-            $state.go('main');
+            return res;
         }
         this.login = function (email, password) {
-            return $http.post(API_URL + 'login', {
-                email: email,
-                password: password
+            alert(email+' '+ password);
+            var data='email='+email +'&password='+password;
+            return $http.post(API_URL + '/login/'+data,
+            {
+                headers: { 'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS', 'Content-Type': 'application/json; charset=utf-8', dataType: "json" }
             }).success(authSuccessful);
         };
-        this.register = function (email, password) {
-            return $http.post(API_URL + 'register', {
-                email: email,
-                password: password
+        this.register = function (name ,email, password) {
+            var data='email='+email +'&password='+password+'&name='+name;
+            return $http.post(API_URL + '/registration/'+data,
+            {
+                headers: { 'Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS', 'Content-Type': 'application/json; charset=utf-8', dataType: "json" }
             }).success(authSuccessful);
         };
 
@@ -23,6 +25,8 @@ angular.module('happysevaApp.services',[])
     .service('mainService', function (API_URL, $state){
         var ServiceList= '[{"Category": "House","Services": ["Cleaning","Nanny","Plumber","Gardening","Electrician","Carpenter","Mason","Repairs","Cooks","Maid","Furnishing","Tailoring","Driver","Laundry & Ironing","Painting","Pest Control"]},{"Category": "Office","Services": ["Office Supplies","Office Maintenance","Office Accounting","Office Secretarial","Courier - Last Mile","Office Furnishing"]},{"Category": "Security","Services": ["Child Security (school group)","Women Security (office group)","Home Security","Guard Services","Office Security","Firedorm","Online Security (specailized)"]},{"Category": "Citizen","Services": ["Bangalore One","Companion Services","E-Governance","Saloon Services","e-facilitation"]},{"Category": "Medical","Services": ["Ambulance","Diagnostics","Clinical Services","Pharma/Chemists","Ayurveda"]},{"Category": "Recreation","Services": ["Sports","Library","Gym","Yoga","Arts","Events","Kids"]}]';
         var ServiceList1 = '[{"Category": "House","Services": [{"name":"Cleaning","status":"yes"},{"name":"Nanny","status":"yes"},{"name":"Furnishing","status":"yes"},{"name":"Pest Control","status":"yes"},{"name":"Plumber","status":"no"},{"name":"Gardenning","status":"no"},{"name":"Electrician","status":"no"},{"name":"Carpenter","status":"no"},{"name":"Mason","status":"no"},{"name":"Repairs","status":"no"},{"name":"Cooks","status":"no"},{"name":"Maid","status":"no"},{"name":"Tailoring","status":"no"},{"name":"Driver","status":"no"},{"name":"Laundry & Ironing","status":"no"},{"name":"Painting","status":"no"}]},{"Category": "Office","Services": [{"name":"Office Accounting","status":"yes"},{"name":"Office Secretarial","status":"yes"},{"name":"Office Furnishing","status":"yes"},{"name":"Office Supplies","status":"no"},{"name":"Office Maintenance","status":"no"},{"name":"Courier - Last Mile","status":"no"}]},{"Category": "Security","Services": [{"name":"Child Security (school group)","status":"no"},{"name":"Women Security (office group)","status":"no"},{"name":"Home Security","status":"no"},{"name":"Guard Services","status":"no"},{"name":"Office Security","status":"no"},{"name":"Firedorm","status":"no"},{"name":"Online Security (specailized)","status":"no"}]},{"Category": "Citizen","Services": [{"name":"Bangalore One","status":"no"},{"name":"Companion Services","status":"no"},{"name":"E-Governance","status":"no"},{"name":"Saloon Services","status":"no"},{"name":"e-facilitation","status":"no"}]},{"Category": "Medical","Services": [{"name":"Diagnostics","status":"yes"},{"name":"Clinical Services","status":"yes"},{"name":"Pharma/Chemists","status":"yes"},{"name":"Ayurveda","status":"no"},{"name":"Ambulance","status":"no"}]},{"Category": "Recreation","Services": [{"name":"Sports","status":"yes"},{"name":"Gym","status":"yes"},{"name":"Yoga","status":"yes"},{"name":"Kids","status":"yes"},{"name":"Events","status":"no"},{"name":"Arts","status":"no"},{"name":"Library","status":"no"}]}]';
+        var OrderList = '[{"OrderList":[{"orderId":"#Hs123456","orderDate":"March 05, 2015 | 11.00 AM", "vender":"Om sai pluming service","stutas":"active"},{"orderId":"#Hs230456","orderDate":"March 05, 2015 | 11.00 AM", "vender":"Om sai xyz service","stutas":"active"},{"orderId":"#Hs128456","orderDate":"March 05, 2015 | 11.00 AM", "vender":"Om sai pluming service","stutas":"active"},{"orderId":"#Hs123486","orderDate":"March 05, 2015 | 11.00 AM", "vender":"Om sai pluming service","stutas":"completed"}]}]';
+
         function ListSuccessful(res) {
 
 
@@ -34,12 +38,12 @@ angular.module('happysevaApp.services',[])
             localStorage.setItem("currentCategory", cat);
             this.category = localStorage.getItem("currentCategory");
 
-        }
+        },
         this.setServiceName = function(name){
             localStorage.setItem("currentServiceName", name);
             this.currentServiceName = localStorage.getItem("currentServiceName");
 
-        }
+        },
         this.subServices = function (category){
             /*return $http.post(API_URL+'subservices',{
                 category:category
@@ -53,6 +57,20 @@ angular.module('happysevaApp.services',[])
                    return DataList[i].Services;
                 }
             }
+
+        },
+        this.getOrderList = function(){
+            /*return $http.post(API_URL+'subservices',{
+             category:category
+             }).success(ListSuccessful);*/
+            var OrderList1 =JSON.parse(OrderList);
+            for(var i=0;i<OrderList1.length;i++){
+
+                    return OrderList1[i].OrderList;
+
+            }
+           /* console.log(OrderList);
+            return OrderList1*/
 
         }
     })

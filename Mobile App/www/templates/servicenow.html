@@ -1,6 +1,10 @@
-<ion-view cache-view="false" title="<i class='icon custom-Icon2 ion-help-circled'></i><span class='bar-tilte'>{{serviceName}}</span>" hide-back-button="false" align-title="left" class="bgblack" >
+<ion-view cache-view="false" title="<i class='icon custom-Icon2 ion-help-circled'></i><span class='bar-tilte'>{{serviceName}}</span>" hide-back-button="false" align-title="left" class="themeBgColor1" >
     <ion-content has-header="true" has-tabs="true" padding="true">
-
+        <div style="position: relative">
+            <div class="logo-center">
+                <img src="img/icon-sample.png" class="logoWidth"/>
+            </div>
+        </div>
         <form ng-submit="serviceNow()"  name="servicenow" novalidate>
             <div class="list">
                 <label class="item item-input item-transpert">
@@ -15,7 +19,7 @@
                     </div>
                     <input type="time" placeholder="Time:" ng-model="cDatetime" name="cDatetime" required>
                 </label>
-                <button class="button button-block button-outline button-calm" type="submit">Confirm</button>
+                <button class="button button-block button-full button-assertive" type="submit">Confirm</button>
             </div>
         </form>
     </ion-content>

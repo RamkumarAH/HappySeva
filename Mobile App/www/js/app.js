@@ -42,7 +42,26 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
                         }
                 }
             })
-
+            .state('menu.order',{
+                url: "/order",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/order.html",
+                        controller: 'OrderCtrl'
+                    }
+                }
+            })
+            .state('menu.profile',{
+                url: "/profile",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/profile.html",
+                        controller: 'ProfileCtrl'
+                    }
+                }
+            })
             .state('menu.about',{
                 url: "/about",
                 views:{
@@ -106,10 +125,10 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
 
        // $httpProvider.interceptors.push('authInterceptor');
         $urlRouterProvider.otherwise('/');
-
+        $httpProvider.defaults.headers.post
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
     })
-    .constant('API_URL','http://localhost/api')
+    .constant('API_URL','http://www.webenza.in/happy-seva/services')
     .run(function($rootScope, $state, $window, $ionicPlatform ,$cordovaSplashscreen, $ionicPopup ,$cordovaNetwork){
 
         $ionicPlatform.ready(function() {

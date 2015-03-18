@@ -37,6 +37,9 @@
         <param name="android-package" value="com.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
     <icon density="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon density="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
     <icon density="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />

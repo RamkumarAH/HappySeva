@@ -14,6 +14,12 @@ angular.module('happysevaApp.homeControllers',[])
 
     })
     .controller('HomeCtrl', function ($scope, $state, $ionicSideMenuDelegate, mainService, $cordovaGeolocation , $rootScope) {
+        $scope.home_height = window.innerHeight;
+        $scope.home_width = window.innerWidth;
+        $scope.home_top = $scope.home_height / 3;
+        var temp = ($scope.home_height / 4);
+        $scope.home_left =  (temp / 2)- 3;
+
         $scope.leftButton = "ion-home";
         $scope.subService = function(category){
             $scope.setPosition();
@@ -69,6 +75,28 @@ angular.module('happysevaApp.homeControllers',[])
         }
 
     })
+    //OrderCtrl
+    .controller('OrderCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService, $ionicLoading, $timeout){
+        $scope.orderlist= {orderDate:'', orderId:'', stutas:'', vender:''};
+        $ionicLoading.show({
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+            $scope.orderlist = mainService.getOrderList();
+            console.log($scope.orderlist);
+        }, 2000);
+    })
+    //ProfileCtrl
+    .controller('ProfileCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService){
+        $scope.fullname= 'Ramkumar';
+        $scope.email ="ramkumar@gmail.com";
+
+    })
     //ErrorCtrl
     .controller('ErrorCtrl',function($scope, $state, $ionicSideMenuDelegate, mainService){
         $scope.contentH = window.innerHeight-44;
@@ -116,7 +144,9 @@ angular.module('happysevaApp.homeControllers',[])
                 targetWidth: 1000,
                 targetHeight: 1000,
                 saveToPhotoAlbum: false,
-                allowEdit : true
+                allowEdit : true,
+                destinationType: navigator.camera.DestinationType.FILE_URI,
+                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
                 /*sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
                 popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)*/
 

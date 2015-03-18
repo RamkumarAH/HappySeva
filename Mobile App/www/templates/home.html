@@ -1,9 +1,9 @@
-<ion-view view-title="<i class='icon custom-Icon1 custom-House'></i><span class='bar-tilte'>Home</span>" hide-back-button="true" align-title="left" class="bgblack" >
-    <ion-content has-header="true" has-tabs="true" padding="true">
-        <div class="home">
-            <div class="cm-container">
-                <div class="cm-large-circle">
-                    <ul class="cm-small-circle">
+<ion-view  view-title="<i class='icon custom-Icon1 custom-order'><img src='img/home_96x96.png' class='navIcon' /></i><span class='bar-tilte'>Home</span>" hide-back-button="true" align-title="left" class="themeBgColor1" >
+    <ion-content  has-header="true" has-tabs="true" padding="true">
+        <div class="home" style="height:{{home_height}}px">
+            <div class="cm-container"  style="width:{{home_width-20}}px;height: {{home_height-43}}px;">
+                <div class="cm-large-circle" style="width:{{home_width-20}}px;height: {{home_height-43}}px;">
+                    <ul class="cm-small-circle" style="width:{{home_width-20}}px;height: {{home_height-43}}px;">
                         <li ui-sref-active="active">
                             <a ng-click="subService('House')" class="button button-transferant">
                                 <i class="icon custom-Icon custom-House"></i>
@@ -39,7 +39,7 @@
                                 <i class="icon custom-Icon custom-Recreation"></i><br/>Recreation</a>
 
                         </li>
-                        <div class="logo"></div>
+                        <div class="logo" style="width:{{home_width}}px;height: {{home_height}}px; padding: 0; top: -33%; left: -20%; z-index: -1;"><img src="img/home_white.png" height="{{home_height}}"></div>
                     </ul>
                 </div>
             </div>

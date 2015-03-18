@@ -1,12 +1,13 @@
 'use strict';
 angular.module('happysevaApp.IntroControllers',[])
     .controller('SplashCtrl', function ($scope, $state, CordovaNetwork) {
+        $scope.home_height = window.innerHeight;
+        $scope.home_top = $scope.home_height / 3;
         setTimeout(function() {
            $state.go('intro');
         }, 3000)
     })
     .controller('IntroCtrl', function($scope, $state, $cordovaNetwork, $rootScope) {
-        //var type = $cordovaNetwork.getNetwork();
         $scope.leftButton = "Skip";
         $scope.contentH = window.innerHeight-64;
         $scope.leftButtons = function (){

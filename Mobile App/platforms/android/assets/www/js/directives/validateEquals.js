@@ -272,3 +272,15 @@ angular.module('happysevaApp')
             }
         };
     })
+    .directive('input', ['$parse', function ($parse) {
+        return {
+            restrict: 'E',
+            require: '?ngModel',
+            link: function (scope, element, attrs) {
+                if(attrs.value) {
+                    $parse(attrs.ngModel).assign(scope, attrs.value);
+                }
+            }
+        };
+    }]);
+
