@@ -1,6 +1,6 @@
 <ion-view view-title="<i class='icon custom-Icon2 ion-android-contacts'></i><span class='bar-tilte'>About us</span>" hide-back-button="true" align-title="left" class="bgblack" >
-   <!-- <ion-content has-header="true" has-tabs="true" padding="true">-->
-        <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)" pager-click="pagerClick($index)">
+
+        <!--<ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)" pager-click="pagerClick($index)">
             <ion-slide style="">
                 <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
                     <div class="logo-center">
@@ -52,7 +52,53 @@
                 </div>
 
             </ion-slide>
-        </ion-slide-box>
-        <div class="skip1"><a class="button button-clear button-calm" ui-sref="login" >{{skip}}</a></div>
-    <!--</ion-content>-->
+        </ion-slide-box>-->
+    <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)" pager-click="pagerClick($index)">
+        <ion-slide>
+            <div class="" ng-style="{'height':'{{contentH}}px','position':'relative'}">
+                <div class="logo-center">
+                    <img src="img/white_logo.png" class="logoWidth"/>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                    </div>
+                </div>
+
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_1}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_2}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_3}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_4}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_5}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_6}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
+            </div>
+        </ion-slide>
+    </ion-slide-box>
+        <div class="skip1"><a class="button button-clear button-calm" ui-sref="menu.home" >{{skip}}</a></div>
+
 </ion-view>

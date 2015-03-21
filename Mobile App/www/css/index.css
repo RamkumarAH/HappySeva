@@ -144,16 +144,13 @@ h1 {
     background-color: #f4f4f4;
     border-top-width: 0;
     border-color: #00c0e3;
-
     color: #2d2d2d;
     margin: 0 10px 38px 10px;
-
-
 }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
-
     color: #2d2d2d;
     height: 22px;
+    font-size: 16px;
 }
 .menubg{
     background-color: #e13714;
@@ -337,13 +334,21 @@ ul.cm-small-circle li:nth-child(6){
 
 /* Large desktop */
 @media (min-width: 1200px) {
+    .homeImge{
 
+    }
 }
 
 /* Tablet (e.g. Apple iPad 2-3rd, mini) */
 @media (min-width: 768px) and (max-width: 979px) {
     .cm-container {
         width: 768px;
+    }
+    .homeImge{
+        position: absolute;
+
+        left: 62px;
+        top: -400px;
     }
 }
 
@@ -352,6 +357,10 @@ ul.cm-small-circle li:nth-child(6){
     .cm-container {
         width: 600px;
     }
+
+    .homeImge{
+
+    }
 }
 
 /* Apple iPhone 5 Size: 320x568 (Portrait) */
@@ -359,7 +368,9 @@ ul.cm-small-circle li:nth-child(6){
     .cm-container {
         width: 362px;
     }
+    .homeImge{
 
+    }
     /* Large Circle */
     .cm-large-circle {
         /* margin: 50% auto; */
@@ -420,7 +431,7 @@ ul.cm-small-circle li:nth-child(6){
     /* 1ST MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(1){
         top: 10px;
-        left: -42px;
+        left: -57px;
     }
 
 
@@ -428,7 +439,7 @@ ul.cm-small-circle li:nth-child(6){
     /* 2ND MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(2){
         top: -71px;
-        left: 86px;
+        left: 72px;
     }
 
 
@@ -450,7 +461,7 @@ ul.cm-small-circle li:nth-child(6){
     /* 5TH MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(5){
         top: 217px;
-        left: 79px;
+        left: 72px;
     }
 
 
@@ -476,7 +487,132 @@ ul.cm-small-circle li:nth-child(6){
     .cm-container {
         width: 320px;
     }
+    .homeImge {
 
+    }
+
+    /* Large Circle */
+    .cm-large-circle {
+        /* margin: 100px auto; */
+        /* width: 200px; */
+        /* height: 200px; */
+        /*  border: 4px solid #2d2d2d;*/
+
+        /* margin: 33% 0 0 20%; */
+    }
+
+    /* Dashed Inner Border */
+    .cm-large-circle:before {
+        left: 4px;
+        top: 4px;
+        /*   border: 1px dashed #2d2d2d;*/
+        width: 190px;
+        height: 190px;
+    }
+
+    /* 6 Small Circles */
+    ul.cm-small-circle {
+        list-style: none;
+    }
+
+    ul.cm-small-circle li {
+        width: 30px;
+        height: 30px;
+        /* border: 2px solid rgb(0, 0, 0); */
+
+        line-height: 10px;
+    }
+
+    /* Logo */
+    ul.cm-small-circle div.logo{
+        padding: 24px 18px 4px 26px;
+        font-size: 18px;
+
+        top: -74% !important;
+    }
+
+    ul.cm-small-circle li:hover{
+        /* border: 2px solid rgba(0, 0, 0, 0.6); */
+    }
+
+    /* Icon */
+    ul.cm-small-circle li a{
+        line-height: 0;
+        padding: 0px 6px;
+        font-size: 15px;
+    }
+
+    ul.cm-small-circle li:hover a{
+        color: rgb(80,80,80);
+    }
+
+    /* Big Circle Texts */
+
+
+
+
+    /* 1ST MENU LINK ======================================== */
+    ul.cm-small-circle li:nth-child(1){
+        top: 7px;
+        left: -44px;
+    }
+
+
+    /* 2ND MENU LINK ======================================== */
+    ul.cm-small-circle li:nth-child(2){
+        top: -51px;
+        left: 62px;
+    }
+
+
+
+    /* 3RD MENU LINK ======================================== */
+    ul.cm-small-circle li:nth-child(3){
+        top: 4px;
+        left: 150px;
+    }
+
+
+
+    /* 4TH MENU LINK ======================================== */
+    ul.cm-small-circle li:nth-child(4){
+        top: 95px;
+        left: 150px;
+    }
+
+
+
+    /* 5TH MENU LINK ======================================== */
+    ul.cm-small-circle li:nth-child(5){
+        top: 150px;
+        left: 56px;
+    }
+
+
+
+    /* 6TH MENU LINK ======================================== */
+    ul.cm-small-circle li:nth-child(6){
+        left: -52px;
+        top: 95px;
+    }
+
+
+
+}
+
+@media (max-width: 240px) {
+    /* Container */
+    .cm-container {
+        width: 240px;
+    }
+    .homeImge{
+        position: absolute;
+
+        left: 32px;
+        top: 57px;
+    }
+
+    img.homeImge {}
     /* Large Circle */
     .cm-large-circle {
         /* margin: 100px auto; */
@@ -502,8 +638,8 @@ ul.cm-small-circle li:nth-child(6){
     }
 
     ul.cm-small-circle li {
-        width: 30px;
-        height: 30px;
+        width: 21px;
+        height: 21px;
         /* border: 2px solid rgb(0, 0, 0); */
     }
 
@@ -511,6 +647,8 @@ ul.cm-small-circle li:nth-child(6){
     ul.cm-small-circle div.logo{
         padding: 24px 18px 4px 26px;
         font-size: 18px;
+
+        top: -79% !important;
     }
 
     ul.cm-small-circle li:hover{
@@ -519,9 +657,9 @@ ul.cm-small-circle li:nth-child(6){
 
     /* Icon */
     ul.cm-small-circle li a{
-        line-height: 30px;
+        line-height: 0;
         padding: 0px 6px;
-        font-size: 15px;
+        font-size: 13px;
     }
 
     ul.cm-small-circle li:hover a{
@@ -535,53 +673,52 @@ ul.cm-small-circle li:nth-child(6){
 
     /* 1ST MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(1){
-        top: 7px;
-        left: -44px;
+        top: -35px;
+        left: -40px;
     }
 
 
     /* 2ND MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(2){
-        top: -51px;
-        left: 69px;
+        top: -70px;
+        left: 41px;
     }
 
 
 
     /* 3RD MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(3){
-        top: 4px;
-        left: 150px;
+        top: -35px;
+        left: 101px;
     }
 
 
 
     /* 4TH MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(4){
-        top: 95px;
-        left: 150px;
+        top: 50px;
+        left: 107px;
     }
 
 
 
     /* 5TH MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(5){
-        top: 150px;
-        left: 60px;
+        top: 87px;
+        left: 37px;
     }
 
 
 
     /* 6TH MENU LINK ======================================== */
     ul.cm-small-circle li:nth-child(6){
-        left: -45px;
-        top: 95px;
+        left: -54px;
+        top: 47px;
     }
 
 
 
 }
-
 
 a span{ white-space: nowrap;}
 .bar .title.title-left {
@@ -597,19 +734,22 @@ a span{ white-space: nowrap;}
     height: auto;
     display: block;
     text-align: left;
-    /*  border: 1px solid #244950;*/
+    position: relative;
     line-height: 21px;
     color: #6c6c6c;
     cursor: pointer;
     padding: 5% 2%;
-    font-size: 16px;
+    font-size: 20px;
 }
-.iconWidth-yes{
-    width:50px;
-    height: 30px;
+.iconWidth-1{
+    width: 48px;
+    height: 48px;
     opacity: 1;
+    position: absolute;
+    right: 10px;
+    top: 0;
 }
-.iconWidth-no{
+.iconWidth-0{
     width:50px;
     height: 30px;
     opacity: 0.4;
@@ -618,11 +758,11 @@ a span{ white-space: nowrap;}
     color: #2f2f2f;
     border: 1px solid #09a3bf;
 }
-.listService li a.active-no{
+.listService li a.active-0{
     border: 1px solid #d1eaf1;
     color: #b8b8b8;
 }
-.listService li a.active-yes{
+.listService li a.active-1{
     color: #2f2f2f;
     border: 1px solid #1fc8e5;
 }
@@ -693,17 +833,13 @@ input[type="search"]{
     background-repeat: no-repeat;
 }
 .custom-Icon{
-
     width: 38px;
-    height: 38px;
+    height: 46px;
     display: inherit;
-
-
     margin-bottom: 4px;
-
+    position: relative;
 }
 .custom-Icon1{
-
     width: 32px;
     height: 32px;
     display: inherit;
@@ -785,58 +921,62 @@ input[type="search"]{
 }
 
 .logoWidth{
-    height: 150px;
+    height: 200px;
     width: 200px;
 }
-
+.logoWidth1{
+    height: 100px;
+    width: 100px;
+    margin-bottom: 20px;
+}
 ul.cm-small-circle li a:hover, ul.cm-small-circle li a:active{
     color: #07cff4;
 }
 
 .spinner-table {
-       max-width: 280px;
-     }
+    max-width: 280px;
+}
 .spinner-table tbody > tr > th, .spinner-table tbody > tr > td {
-       vertical-align: middle;
-       width: 42px;
-       height: 42px;
-     }
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+}
 .spinner {
-       stroke: #444;
-       fill: #444; }
-   .spinner svg {
-     width: 28px;
-         height: 28px; }
-   .spinner.spinner-inverse {
-         stroke: #fff;
-         fill: #fff; }
+    stroke: #444;
+    fill: #444; }
+.spinner svg {
+    width: 28px;
+    height: 28px; }
+.spinner.spinner-inverse {
+    stroke: #fff;
+    fill: #fff; }
 
- .spinner-android {
-       stroke: #4b8bf4; }
+.spinner-android {
+    stroke: #4b8bf4; }
 
- .spinner-ios, .spinner-ios-small {
-      stroke: #69717d; }
+.spinner-ios, .spinner-ios-small {
+    stroke: #69717d; }
 
- .spinner-spiral .stop1 {
-       stop-color: #fff;
-       stop-opacity: 0; }
+.spinner-spiral .stop1 {
+    stop-color: #fff;
+    stop-opacity: 0; }
 .spinner-spiral.spinner-inverse .stop1 {
-   stop-color: #000; }
- .spinner-spiral.spinner-inverse .stop2 {
-   stop-color: #fff; }
- .Order{
+    stop-color: #000; }
+.spinner-spiral.spinner-inverse .stop2 {
+    stop-color: #fff; }
+.Order{
     color: #646464;
- }
- .Order h5{color: #646464; font-weight: normal;}
- .Order ul li{
-     border: 1px solid #00c1e2;
-     padding: 3% 3% 0 3%;
-     border-top: 0;
-     margin-bottom: 4%;
-     position: relative;
-     font-size: 13px;
-     color: #646464;
- }
+}
+.Order h5{color: #646464; font-weight: normal;}
+.Order ul li{
+    border: 1px solid #00c1e2;
+    padding: 3% 3% 0 3%;
+    border-top: 0;
+    margin-bottom: 4%;
+    position: relative;
+    font-size: 13px;
+    color: #646464;
+}
 .Order ul li a {
     font-size: 12px;
     display: block;
@@ -867,4 +1007,58 @@ ul.cm-small-circle li a:hover, ul.cm-small-circle li a:active{
     border-radius: 50px;
     border: 1px solid #00c1e2;
     position: absolute;
+}
+.homeoptionIcon{
+    width: 32px;
+    position: absolute;
+    top: 1px;
+    left: 13%;
+}
+p {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.modal-backdrop, .modal-backdrop-bg {
+    opacity:1;
+}
+.navigateIcon{
+    position: absolute;bottom: 5%;right: 1%;z-index: 20;
+
+}
+.navigateIcon button{
+    border-radius: 20px;
+}
+.navigateIcon button i{
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+}
+.controls {
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pacinput {
+    background-color: #fff;
+    font-family: "customfont1", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 18px 12px;
+    text-overflow: ellipsis;
+    width: 94%;
+}
+
+input#pacinput {}
+
+#pacinput:focus {
+    border-color: #4d90fe;
 }

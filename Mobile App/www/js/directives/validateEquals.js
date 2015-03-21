@@ -111,6 +111,7 @@ angular.module('happysevaApp')
             template: "<div></div>",
             scope: {
                 center: "=",        // Center point on the map (e.g. <code>{ latitude: 10, longitude: 10 }</code>).
+                /*currentPlace: "=",  // {place : "Address"}.*/
                 markers: "=",       // Array of map markers (e.g. <code>[{ lat: 10, lon: 10, name: "hello" }]</code>).
                 width: "@",         // Map width in pixels.
                 height: "@",        // Map height in pixels.
@@ -132,6 +133,8 @@ angular.module('happysevaApp')
                     console.log("map: init callback");
                     createMap();
                     updateMarkers();
+                    setMapCenter();
+                    setaddress();
                 };
 
                 if (!$window.google || !$window.google.maps ) {
@@ -147,19 +150,26 @@ angular.module('happysevaApp')
                     console.log("map: start loading js gmaps");
                     var script = $window.document.createElement('script');
                     script.type = 'text/javascript';
-                    script.src = 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&callback=InitMapCb';
+                    script.src = 'http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&callback=InitMapCb&libraries=places';
                     $window.document.body.appendChild(script);
                 }
 
                 function createMap() {
-                    console.log("map: create map start");
+                    console.log("map: create map start =" + scope.zoom);
                     var mapOptions = {
-                        zoom: 10,
+                        zoom: parseInt(scope.zoom),
                         center: new google.maps.LatLng(12.9667, 77.5667),
                         mapTypeId: google.maps.MapTypeId.ROADMAP,
-                        panControl: true,
+                        panControl: false,
+                        panControlOptions: {
+                            position: google.maps.ControlPosition.LEFT_CENTER
+                        },
                         zoomControl: true,
                         mapTypeControl: true,
+                        mapTypeControlOptions: {
+                            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                            position: google.maps.ControlPosition.RIGHT_CENTER
+                        },
                         scaleControl: false,
                         streetViewControl: false,
                         navigationControl: true,
@@ -176,11 +186,27 @@ angular.module('happysevaApp')
                             return false;
                         });
                         infowindow = new google.maps.InfoWindow();
+                        var input = /** @type {HTMLInputElement} */(
+                            document.getElementById('pacinput'));
+
+                        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+                        var searchBox = new google.maps.places.SearchBox(
+                            /** @type {HTMLInputElement} */(input));
+                        google.maps.event.addListener(searchBox, 'places_changed', function() {
+                            /*var places = searchBox.getPlaces();
+                            if (places.length == 0) {
+                                return;
+                            }
+                            input.text = places[i].name;*/
+                        })
 
                     }
                 }
-
+                scope.$watch('center', function(){
+                    setMapCenter();
+                });
                 scope.$watch('markers', function() {
+
                     updateMarkers();
                 });
 
@@ -224,7 +250,15 @@ angular.module('happysevaApp')
                         onItemClick(marker, member.name, member.mobile, href);
                     };
                 }
+                function setMapCenter(){
+                    if(map && scope.center){
+                        var pos = new google.maps.LatLng(scope.center.latitude,
+                            scope.center.longitude);
 
+                        var mm = new google.maps.Marker({ position: pos, map: map, title:'main',icon: 'img/geoicon.png' });
+                        map.setCenter(pos);
+                    }
+                }
                 // update map markers to match scope marker collection
                 function updateMarkers() {
                     if (map && scope.markers) {
@@ -247,6 +281,7 @@ angular.module('happysevaApp')
 
                 // convert current location to Google maps location
                 function getLocation(loc) {
+                    alert('ok');
                     if (loc == null) return new google.maps.LatLng(40, -73);
                     if (angular.isString(loc)) loc = scope.$eval(loc);
                     return new google.maps.LatLng(loc.lat, loc.lon);

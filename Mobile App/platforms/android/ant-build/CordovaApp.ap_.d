@@ -42,7 +42,9 @@ C:\developmentProject\happysea\platforms\android\assets\www\plugins \
 C:\developmentProject\happysea\platforms\android\assets\www\res \
 C:\developmentProject\happysea\platforms\android\assets\www\templates \
 C:\developmentProject\happysea\platforms\android\assets\www\css\index.css \
+C:\developmentProject\happysea\platforms\android\assets\www\img\android-location_icon.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\citizen_96x96.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\geoicon.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\home.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\home_96x96.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\home_white.png \
@@ -63,6 +65,7 @@ C:\developmentProject\happysea\platforms\android\assets\www\img\tour4.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\tour5.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\tour6.png \
 C:\developmentProject\happysea\platforms\android\assets\www\img\white_logo.png \
+C:\developmentProject\happysea\platforms\android\assets\www\img\white_logo1.png \
 C:\developmentProject\happysea\platforms\android\assets\www\js\app.js \
 C:\developmentProject\happysea\platforms\android\assets\www\js\controllers \
 C:\developmentProject\happysea\platforms\android\assets\www\js\directives \
@@ -168,6 +171,7 @@ C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.c
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.media-capture \
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.network-information \
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen \
+C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.statusbar \
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\com.ionic.keyboard\www \
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\com.ionic.keyboard\www\keyboard.js \
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.battery-status\www \
@@ -228,6 +232,8 @@ C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.c
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.network-information\www\network.js \
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www \
 C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www\splashscreen.js \
+C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.statusbar\www \
+C:\developmentProject\happysea\platforms\android\assets\www\plugins\org.apache.cordova.statusbar\www\statusbar.js \
 C:\developmentProject\happysea\platforms\android\assets\www\res\icon \
 C:\developmentProject\happysea\platforms\android\assets\www\res\icon.png \
 C:\developmentProject\happysea\platforms\android\assets\www\res\screen \
@@ -297,6 +303,7 @@ C:\developmentProject\happysea\platforms\android\assets\www\templates\home.html 
 C:\developmentProject\happysea\platforms\android\assets\www\templates\intro.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\login.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\menu.html \
+C:\developmentProject\happysea\platforms\android\assets\www\templates\my-model.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\order.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\profile.html \
 C:\developmentProject\happysea\platforms\android\assets\www\templates\servicelist.html \

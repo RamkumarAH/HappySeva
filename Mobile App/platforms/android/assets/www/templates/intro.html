@@ -10,7 +10,7 @@
     </ion-nav-bar>
     <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)" pager-click="pagerClick($index)">
         <ion-slide>
-            <div class="" style="position: relative; " ng-style ="{height: contentH + 'px'}">
+            <div class="" ng-style="{'height':'{{contentH}}px','position':'relative'}">
                 <div class="logo-center">
                     <img src="img/white_logo.png" class="logoWidth"/>
                 </div>
@@ -24,39 +24,33 @@
             </div>
         </ion-slide>
         <ion-slide>
-            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
-                <div class="tour1" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
-
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_1}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
             </div>
         </ion-slide>
         <ion-slide>
-            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
-                <div class="tour2" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
-
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_2}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
             </div>
         </ion-slide>
         <ion-slide>
-            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
-                <div class="tour3" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
-
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_3}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
             </div>
         </ion-slide>
         <ion-slide>
-            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
-                <div class="tour4" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
-
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_4}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
             </div>
         </ion-slide>
         <ion-slide>
-            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
-                <div class="tour5" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
-
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_5}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
             </div>
         </ion-slide>
         <ion-slide>
-            <div class="" style="position: relative; " ng-style ="{height: contentH-40 + 'px'}">
-                <div class="tour6" style="width: 100%;" ng-style ="{height: contentH-40 + 'px'}"></div>
-
+            <div ng-style="{'position':'relative','height':+contentH-40+'px'}" >
+                <img src="{{SettingData.TOUR_SCREEN_6}}" alt="tourImg" ng-style="{'width':+window.innerWidth+'px','height':+contentH-40+'px'}" >
             </div>
         </ion-slide>
     </ion-slide-box>

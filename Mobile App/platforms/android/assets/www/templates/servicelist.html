@@ -1,8 +1,11 @@
-<ion-view cache-view="false" title="<i class='icon custom-Icon1 custom-{{service.category}}'></i><span class='bar-tilte'>{{service.category}} Services</span>" hide-back-button="false" align-title="left" class="themeBgColor1" >
+<ion-view cache-view="false" title="<i class='icon custom-Icon1 custom-order'><img src='{{service.icon}}' class='navIcon' /></i><span class='bar-tilte'>{{service.category}}</span>" hide-back-button="false" align-title="left" class="themeBgColor1" >
     <ion-content has-header="true" has-tabs="true" padding="true">
-
        <ul class="listService">
-            <li ng-repeat="list in service.list"><a class="active-{{list.status}}" ng-click="gotoService('{{list.name}}','{{list.status}}')">{{list.name}} <img align="right" src="img/icon-sample.png" class="iconWidth-{{list.status}}"/> </a></li>
+            <li ng-repeat="list in subserviceList">
+                <a id="{{list.service_category_id}}" class="active-{{list.status_ind}}" ng-click="gotoService(list.service_category_title,list.status_ind,list.service_category_id,list.service_category_path, list.service_category_path2)">
+                    {{list.service_category_title}} <img align="right" src="{{list.service_category_path}}" class="iconWidth-{{list.status_ind}}"/>
+                </a>
+            </li>
        </ul>
     </ion-content>
 </ion-view>

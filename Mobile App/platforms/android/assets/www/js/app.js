@@ -1,5 +1,21 @@
 'use strict';
 angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happysevaApp.authControllers','happysevaApp.homeControllers','happysevaApp.services'])
+    .constant('API_URL','http://www.webenza.in/happy-seva/services')
+    .constant('map','map')
+    .run(function($rootScope, $state, $window, $ionicPlatform ,$cordovaSplashscreen, $ionicPopup ,$cordovaNetwork){
+        $ionicPlatform.ready(function() {
+            $cordovaSplashscreen.splashscreen.hide();
+            if(window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            }
+            if(window.StatusBar) {
+                // Set the statusbar to use the default style, tweak this to
+                // remove the status bar on iOS or change it to use white instead of dark colors.
+                StatusBar.styleDefault();
+
+            }
+        });
+    })
     .config(function($urlRouterProvider ,$stateProvider, API_URL, $httpProvider, $compileProvider){
         $stateProvider
             .state('splash', {
@@ -11,6 +27,11 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
                 url: "/login",
                 templateUrl: "templates/login.html",
                 controller: 'LoginCtrl'
+            })
+            .state('model',{
+                url: "/model",
+                templateUrl: "templates/my-model.html"
+
             })
             .state('signup',{
                 url: "/signup",
@@ -125,26 +146,16 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
 
        // $httpProvider.interceptors.push('authInterceptor');
         $urlRouterProvider.otherwise('/');
-
-        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
-    })
-    .constant('API_URL','http://www.webenza.in/happy-seva/services')
-    .run(function($rootScope, $state, $window, $ionicPlatform ,$cordovaSplashscreen, $ionicPopup ,$cordovaNetwork){
-
-        $ionicPlatform.ready(function() {
-            $cordovaSplashscreen.splashscreen.hide();
-            if(window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        $httpProvider.interceptors.push('authInterceptor');
+        $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+        $httpProvider.defaults.transformRequest.unshift(function (data, headersGetter) {
+            var key, result = [];
+            for (key in data) {
+                if (data.hasOwnProperty(key)) {
+                    result.push(encodeURIComponent(key) + "=" + encodeURIComponent(data[key]));
+                }
             }
-            if(window.StatusBar) {
-                // Set the statusbar to use the default style, tweak this to
-                // remove the status bar on iOS or change it to use white instead of dark colors.
-                StatusBar.styleDefault();
-
-            }
-
-
-
+            return result.join("&");
         });
-
-    })
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+    });

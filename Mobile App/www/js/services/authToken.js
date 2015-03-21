@@ -15,9 +15,9 @@ angular.module('happysevaApp').factory('authToken', function ($window) {
 
             return cachedToken;
         },
-        isAuthenticated: function(){
+      /*  isAuthenticated: function(){
             return !!authToken.getToken();
-        },
+        },*/
         removeToken:function(){
             cachedToken =null;
             storage.removeItem(userToken);

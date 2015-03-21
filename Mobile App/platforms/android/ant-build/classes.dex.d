@@ -98,4 +98,8 @@ C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\co
 C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$6.class \
 C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen$7.class \
 C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\splashscreen\SplashScreen.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$1.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$2.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar$3.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\statusbar\StatusBar.class \
 C:\developmentProject\happysea\platforms\android\ant-build\dexedLibs\classes-56f50053bfb2024f2dcc7b36fa1c51f0.jar \

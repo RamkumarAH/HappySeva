@@ -73,4 +73,7 @@
     <feature name="Splashscreen">
         <param name="id" value="org.apache.cordova.splashscreen" />
     </feature>
+    <feature name="StatusBar">
+        <param name="id" value="org.apache.cordova.statusbar" />
+    </feature>
 </widget>

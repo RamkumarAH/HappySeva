@@ -1,45 +1,19 @@
 <ion-view  view-title="<i class='icon custom-Icon1 custom-order'><img src='img/home_96x96.png' class='navIcon' /></i><span class='bar-tilte'>Home</span>" hide-back-button="true" align-title="left" class="themeBgColor1" >
     <ion-content  has-header="true" has-tabs="true" padding="true">
-        <div class="home" style="height:{{home_height}}px">
-            <div class="cm-container"  style="width:{{home_width-20}}px;height: {{home_height-43}}px;">
-                <div class="cm-large-circle" style="width:{{home_width-20}}px;height: {{home_height-43}}px;">
-                    <ul class="cm-small-circle" style="width:{{home_width-20}}px;height: {{home_height-43}}px;">
-                        <li ui-sref-active="active">
-                            <a ng-click="subService('House')" class="button button-transferant">
-                                <i class="icon custom-Icon custom-House"></i>
+        <div class="home">
+            <div class="cm-container">
+                <div class="cm-large-circle" ng-style="{'width':+home_width-20+'px'}">
+                    <ul class="cm-small-circle" ng-style="{'width':+home_width-20+'px'}">
+                        <li ui-sref-active="active" ng-repeat="itemOption in homeoptionList">
+                            <a id="{{itemOption.home_option_id}}" ng-click="subService(itemOption.home_option_id,itemOption.home_option_title,itemOption.home_option_path2)" class="button button-transferant">
+                                <i class="icon custom-Icon"><img src='{{itemOption.home_option_path}}' class='homeoptionIcon' /></i>
                                 <br/>
-                                <span>House</span>
+                                <span>{{itemOption.home_option_title}}</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a ng-click="subService('Office')" class="button button-transferant">
-                                <i class="icon custom-Icon custom-Office"></i>
-                                <br/>
-                                <span>Office</span>
-                            </a>
-
-                        </li>
-                        <li ui-sref-active="active">
-                            <a  ng-click="subService('Security')" class="button button-transferant">
-                                <i class="icon custom-Icon custom-Security"></i><br/>Security</a>
-
-                        </li>
-                        <li ui-sref-active="active">
-                            <a ng-click="subService('Citizen')" class="button button-transferant">
-                                <i class="icon custom-Icon custom-Citizen"></i><br/>Citizen</a>
-
-                        </li>
-                        <li ui-sref-active="active">
-                            <a ng-click="subService('Medical')" class="button button-transferant">
-                                <i class="icon custom-Icon custom-Medical"></i><br/>Medical</a>
-
-                        </li>
-                        <li ui-sref-active="active">
-                            <a ng-click="subService('Recreation')" class="button button-transferant">
-                                <i class="icon custom-Icon custom-Recreation"></i><br/>Recreation</a>
-
-                        </li>
-                        <div class="logo" style="width:{{home_width}}px;height: {{home_height}}px; padding: 0; top: -33%; left: -20%; z-index: -1;"><img src="img/home_white.png" height="{{home_height}}"></div>
+                        <div class="logo" ng-style="{'width':+home_width+'px','height':'100%','padding':'0', 'top': '-86%', 'left': '-23%', 'z-index':'-1'}">
+                            <img src="img/home_white.png" height="{{home_height-20}}" class="homeImge">
+                        </div>
                     </ul>
                 </div>
             </div>
