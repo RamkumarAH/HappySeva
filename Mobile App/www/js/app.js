@@ -1,10 +1,12 @@
 'use strict';
-angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happysevaApp.authControllers','happysevaApp.homeControllers','happysevaApp.services'])
+angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happysevaApp.authControllers','happysevaApp.homeControllers','happysevaApp.services','happysevaApp.ng-cordova_services'])
     .constant('API_URL','http://www.webenza.in/happy-seva/services')
     .constant('map','map')
     .run(function($rootScope, $state, $window, $ionicPlatform ,$cordovaSplashscreen, $ionicPopup ,$cordovaNetwork){
         $ionicPlatform.ready(function() {
             $cordovaSplashscreen.splashscreen.hide();
+            document.removeEventListener("backbutton", function(){
+            }, false);
             if(window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
@@ -13,6 +15,19 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
                 // remove the status bar on iOS or change it to use white instead of dark colors.
                 StatusBar.styleDefault();
 
+            }
+
+        });
+        $ionicPlatform.onHardwareBackButton(function () {
+            if(true) { // your check here
+                $ionicPopup.confirm({
+                    title: 'System warning',
+                    template: 'are you sure you want to exit?'
+                }).then(function(res){
+                    if( res ){
+                        navigator.app.exitApp();
+                    }
+                })
             }
         });
     })
@@ -93,6 +108,36 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
                     }
                 }
             })
+            .state('menu.privacy',{
+                url: "/privacy",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/privacy.html",
+                        controller: 'PrivacyCtrl'
+                    }
+                }
+            })
+            .state('menu.support',{
+                url: "/support",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/support.html",
+                        controller: 'SupportCtrl'
+                    }
+                }
+            })
+            .state('menu.faq',{
+                url: "/faq",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/faq.html",
+                        controller: 'FaqCtrl'
+                    }
+                }
+            })
             .state('menu.servicelist',{
                 url: "/servicelist",
                 views:{
@@ -134,12 +179,22 @@ angular.module('happysevaApp', ['ionic','happysevaApp.IntroControllers','happyse
                 }
             })
             .state('menu.thankyou',{
-                url: "/thankyou",
+                url: "/thankyou/",
                 views:{
                     'menuContent':
                     {
                         templateUrl: "templates/thankyou.html",
                         controller: 'ThankyouCtrl'
+                    }
+                }
+            })
+            .state('menu.thankyou-details',{
+                url: "/thankyou/:vendorId",
+                views:{
+                    'menuContent':
+                    {
+                        templateUrl: "templates/thankyou.html",
+                        controller: 'ThankyouDetailsCtrl'
                     }
                 }
             });

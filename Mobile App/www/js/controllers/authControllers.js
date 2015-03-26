@@ -1,6 +1,6 @@
 'use strict';
 angular.module('happysevaApp.authControllers',[])
-    .controller('LoginCtrl', function ($scope, $state, $cordovaNetwork, $rootScope, auth, $ionicLoading) {
+    .controller('LoginCtrl', function ($scope, $state, $cordovaNetwork, $rootScope, auth, $ionicLoading, $cordovaToast) {
         $scope.loginData ={};
         $scope.tryLogin = function(){
             $ionicLoading.show({
@@ -22,24 +22,45 @@ angular.module('happysevaApp.authControllers',[])
                             $state.go('menu.home');
                         }else{
                             $ionicLoading.hide();
-                            alert('Error ' + res.msg + '!');
+                            $cordovaToast.show(res.msg, 'long', 'bottom');
                         }
                     })
                     .error(function (err) {
-                        alert('error1 = '+err);
+                         $cordovaToast.show(err, 'long', 'bottom');
                     });
 
             }else{
+                $ionicLoading.hide();
                 $state.go('error');
             }
 
-        }
+        };
         $scope.goto= function(Slacation){
             $state.go(Slacation);
+        };
+        $scope.logout = function () {
+            $ionicLoading.show({
+                content: 'Loading',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 200,
+                showDelay: 0
+            });
+            auth.Logout().success(function(res){
+                if(res.status){
+                    $ionicLoading.hide();
+                    $state.go('login');
+                }
+                else{
+                    $ionicLoading.hide();
+
+                    $cordovaToast.show('Logout Failed', 'long', 'bottom');
+                }
+            })
         }
     })
 
-    .controller('SignupCtrl', function ($scope, $state, auth, $ionicLoading ) {
+    .controller('SignupCtrl', function ($scope, $state, auth, $ionicLoading ,$cordovaToast) {
 
         $scope.trySignup = function(){
             $ionicLoading.show({
@@ -62,11 +83,13 @@ angular.module('happysevaApp.authControllers',[])
                             $state.go('menu.home');
                         }else{
                             $ionicLoading.hide();
-                            alert('Error ' + res.msg + '!');
+                            $cordovaToast.show(res.msg, 'long', 'bottom');
+
                         }
                     })
                     .error(function () {
-                        alert('warning');
+                        $cordovaToast.show('Registration failed', 'long', 'bottom');
+
                     });
 
 

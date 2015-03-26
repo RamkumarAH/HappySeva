@@ -149,14 +149,12 @@ h1 {
 }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
     color: #2d2d2d;
-    height: 22px;
-    font-size: 16px;
+    height: 32px;
+    font-size: 20px;
 }
 .menubg{
     background-color: #e13714;
-
 }
-
 .button-transferant{ background-color: transparent; border-color: transparent;}
 .button-transferant:hover{ background-color: transparent; border-color: transparent;}
 
@@ -728,7 +726,7 @@ a span{ white-space: nowrap;}
 .listService li{
     width: 98%;
     /* float: left;*/
-    margin: 1%;
+    margin: 5% 1%;
 }
 .listService li a{
     height: auto;
@@ -888,14 +886,15 @@ input[type="search"]{
     color: #000000;
 }
 #infoBgwindow{
-    background: #222222;
-    color: #00c0e3;
+    background: #fff;
+    color: #202020;
+    position: relative;
 }
 .item-select select{
     color: #ffffff;
     background: #2d2d2d;
 }
-.input-label{color: #A09E9E;}
+.input-label{color: #A09E9E; font-size: 20px; }
 .button-bar > .button {
 
     border-width: 1px 1px 1px 1px;
@@ -906,8 +905,9 @@ input[type="search"]{
     color: #ffffff;
 }
 .mainInfoWindow{
-    background: #222222 !important;
-    color: #00c0e3;
+    background: #fff !important;
+    color: #282828;
+    border: 1px solid rgb(43, 214, 221);
 }
 .skip1{
     position: absolute;
@@ -923,6 +923,10 @@ input[type="search"]{
 .logoWidth{
     height: 200px;
     width: 200px;
+}
+.logoWidth2{
+    height: 300px;
+    width: 300px;
 }
 .logoWidth1{
     height: 100px;
@@ -1015,8 +1019,9 @@ ul.cm-small-circle li a:hover, ul.cm-small-circle li a:active{
     left: 13%;
 }
 p {
-    font-size: 16px;
-    line-height: 20px;
+    line-height: 21px;
+    font-size: 18px;
+
 }
 
 .modal-backdrop, .modal-backdrop-bg {
@@ -1061,4 +1066,37 @@ input#pacinput {}
 
 #pacinput:focus {
     border-color: #4d90fe;
+}
+.mainInfoWindow{
+    width: 326px !important;
+
+}
+.infoBgwindow{
+    position: relative;
+    display: block;
+}
+.setwidth{
+    max-width: 100% !important;
+}
+.setwidth1{
+    width: 283px !important;
+
+}
+.leftInfo{
+    width: 90px;
+    float: left;
+    border: 1px solid #17BDAA;
+}
+.leftInfo img{ height: 90px;}
+.rightinfo{
+    width: 175px;
+    float: left;
+    margin: 0 0 0 15px;
+}
+.rightinfo h3{ font-size: 14px;}
+.rightinfo p{ font-size: 12px;}
+.mainInfoWindow4{ background-color: transparent !important; box-shadow: rgba(0, 0, 0, 0) 0px 1px 4px -1px !important;}
+.button{
+
+    font-size: 20px;
 }

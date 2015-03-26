@@ -13,10 +13,8 @@
     <preference name="SplashScreen" value="splash" />
     <preference name="splashScreenDelay" value="10000" />
     <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
-    <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
@@ -34,8 +32,13 @@
         <splash density="port-mdpi" src="www/res/screen/android/screen-mdpi-portrait.png" />
         <splash density="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
     </platform>
+    <cdv:engine id="android" />
     <feature name="Keyboard">
         <param name="id" value="com.ionic.keyboard" />
+    </feature>
+    <feature name="Toast">
+        <param name="id" value="nl.x-services.plugins.toast" />
+        <param name="url" value="https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git#:." />
     </feature>
     <feature name="Battery">
         <param name="id" value="org.apache.cordova.battery-status" />

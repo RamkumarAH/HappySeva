@@ -165,7 +165,7 @@ angular.module('happysevaApp')
                             position: google.maps.ControlPosition.LEFT_CENTER
                         },
                         zoomControl: true,
-                        mapTypeControl: true,
+                        mapTypeControl: false,
                         mapTypeControlOptions: {
                             style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
                             position: google.maps.ControlPosition.RIGHT_CENTER
@@ -211,10 +211,18 @@ angular.module('happysevaApp')
                 });
 
                 // Info window trigger function
-                function onItemClick(pin, label, datum, url) {
+                function onItemClick(pin,id, name, mobile,photo,license,address, url) {
                     // Create content
-                    var contentString= "<div id='infoBgwindow'>"
-                    contentString += "Name: " + label + "<br />Mobile: " + datum;
+                    var contentString= "<div id='infoBgwindow'>";
+                    contentString += "<div class='leftInfo'><img src='"+photo+"'/></div>";
+                    contentString += "<div class='rightinfo'><h3>Vendor Profile</h3>";
+                    contentString += "<p>"+name+"</p>";
+                    contentString +="<p>Mobile No: "+mobile+"<br/>";
+                    contentString += "Vender Licence No: "+license+"<br/>";
+                    contentString += "Address: "+address+"</p>";
+                    contentString +="</div>"
+                    contentString +="<div class='text-right'><a class='' href='#/menu/thankyou/"+id;
+                    contentString += "'>Select</a></div>"
                     contentString += '</div>';
                     console.log(contentString);
 
@@ -222,10 +230,17 @@ angular.module('happysevaApp')
                         console.log("map: hi  ");
                        var myParent = document.getElementById("infoBgwindow").parentNode.parentNode.parentNode.parentNode;
                         myParent.className = 'mainInfoWindow';
+
+                       var myP =document.getElementById("infoBgwindow").parentNode.parentNode;
+                        myP.className= 'setwidth';
+                        var myP1 =document.getElementById("infoBgwindow").parentNode.parentNode.parentNode;
+                        myP1.className= 'setwidth1';
+                       // myP.css.width =window.innerWidth;
                        var myChild = document.getElementById("infoBgwindow").parentNode.parentNode.parentNode.parentNode;
-                        myChild.childNodes.item(0).childNodes.item(3).className ='mainInfoWindow';
-                        myChild.childNodes.item(0).childNodes.item(2).childNodes.item(0).childNodes.item(0).className ='mainInfoWindow';
-                        myChild.childNodes.item(0).childNodes.item(2).childNodes.item(1).childNodes.item(0).className ='mainInfoWindow';
+                        myChild.childNodes.item(0).childNodes.item(1).className ='mainInfoWindow4';
+                        myChild.childNodes.item(0).childNodes.item(3).className ='mainInfoWindow1';
+                        myChild.childNodes.item(0).childNodes.item(2).childNodes.item(0).childNodes.item(0).className ='mainInfoWindow2';
+                        myChild.childNodes.item(0).childNodes.item(2).childNodes.item(1).childNodes.item(0).className ='mainInfoWindow3';
                     });
                     // Replace our Info Window's content and position
                     infowindow.setContent(contentString);
@@ -241,13 +256,15 @@ angular.module('happysevaApp')
 
 
                 }
-
+                scope.selectVendor = function(label){
+                    alert(label);
+                }
                 function markerCb(marker, member, location) {
                     return function() {
                         console.log("map: marker listener for " + member.name + member.mobile);
                         var href="http://maps.apple.com/?q="+member.lat+","+member.lon;
                         map.setCenter(location);
-                        onItemClick(marker, member.name, member.mobile, href);
+                        onItemClick(marker,member.id, member.name, member.mobile,member.photo,member.license,member.address, href);
                     };
                 }
                 function setMapCenter(){
@@ -317,5 +334,12 @@ angular.module('happysevaApp')
                 }
             }
         };
-    }]);
+    }])
+    .directive('animateMe', function() {
+        return function(scope, element, attrs) {
+            scope.$watch(attrs.animateMe, function() {
+                element.show(300).delay(900).hide(300);
+            })
+        }
+    });
 

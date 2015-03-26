@@ -1,10 +1,10 @@
-<ion-view view-title="<i class='icon custom-Icon1 custom-order'><img src='img/home_96x96.png' class='navIcon' /></i><span class='bar-tilte'>My Orders</span>" hide-back-button="false" align-title="left" class="themeBgColor1" >
+<ion-view cache-view="false" hide-back-button="false"  view-title="<i class='icon custom-Icon2 ion-bag'></i><span class='bar-tilte'>My Orders</span>" align-title="left" class="themeBgColor1" >
     <ion-content has-header="true" has-tabs="true" padding="true">
         <div class="Order">
             <h5>Active orders</h5>
             <ul class="active-order">
 
-                <li ng-repeat="order in orderlist  | filter: { stutas: 'active' }">
+                <li ng-repeat="order in orderlist  | filter: { status: 'active' }">
                     <div class="active-{{order.status}}">
                         Order id: {{order.orderId}}<br/>
                         Order date: {{order.orderDate}}<br/>
@@ -16,7 +16,7 @@
             </ul>
             <h5>Completed orders</h5>
             <ul class="completed-order">
-                <li ng-repeat="order in orderlist | filter: { stutas: 'completed' }">
+                <li ng-repeat="order in orderlist | filter: { status: 'completed' }">
                     <div class="active-{{order.status}}">
                         Order id: {{order.orderId}}<br/>
                         Order date: {{order.orderDate}}<br/>
