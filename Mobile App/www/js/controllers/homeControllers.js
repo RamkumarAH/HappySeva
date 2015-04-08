@@ -572,7 +572,8 @@ angular.module('happysevaApp.homeControllers', [])
             service_request_mobile: '',
             service_request_problem: '',
             service_request_photo: '',
-            service_request_time: ''
+            service_request_time: '',
+            vendor_id:''
         };
         var input = (document.getElementById('service_request_area'));
         var autocomplete = new google.maps.places.Autocomplete(input);
@@ -608,6 +609,7 @@ angular.module('happysevaApp.homeControllers', [])
             mm = '0' + mm
         }
         $scope.currentDate = yyyy + '-' + mm + '-' + dd + ' ' + hh + ':' + mm1 + ':' + ss;
+        $scope.ServiceData.service_request_city ='Bangalore';
         $scope.ServiceData.service_request_time = $scope.currentDate;
         $scope.ServiceData.home_option_id = mainService.categoryId;
         $scope.ServiceData.service_category_id = mainService.currentServiceId;
@@ -730,9 +732,8 @@ angular.module('happysevaApp.homeControllers', [])
         $scope.currentIcon = mainService.currentServiceIcon;
         $scope.smallIcon = mainService.currentServiceIconSmall;
         $scope.ServiceData = mainService.getServiceData();
-
         $scope.serviceNow = function () {
-            $ionicLoading.show({
+           $ionicLoading.show({
                 content: 'Loading',
                 animation: 'fade-in',
                 showBackdrop: true,
@@ -750,16 +751,12 @@ angular.module('happysevaApp.homeControllers', [])
                     $ionicLoading.hide();
                     $cordovaToast.show(res.msg, 'long', 'bottom');
                 }
-
-            })
-            //$state.go('menu.thankyou');
-
+            });
         }
-
     })
     .controller('ServiceMapCtrl', function ($scope, $window, $state, $ionicPlatform, $location, $ionicSideMenuDelegate, mainService, $ionicLoading, $compile, $cordovaNetwork, $rootScope, $cordovaGeolocation) {
-        /* var isOnline = $cordovaNetwork.isOnline();
-         if(isOnline){*/
+        var isOnline = $cordovaNetwork.isOnline();
+        if(isOnline){
         var lat, long;
         lat = localStorage.getItem("serviceLat");
         long = localStorage.getItem("serviceLong");
@@ -811,11 +808,9 @@ angular.module('happysevaApp.homeControllers', [])
                 }
             });
         };
-
-
-        /* }else{
+        }else{
          $state.go('error');
-         }*/
+         }
     });
 angular.module('happysevaApp.filters', [])
     .filter('lat', function () {
