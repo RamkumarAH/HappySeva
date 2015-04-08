@@ -24,22 +24,22 @@
 
                 </label>
                 <label class="item item-input item-transpert">
-                    <input type="text" g-places-autocomplete ng-model="ServiceData.service_request_area" name="Area" placeholder="Area">
+                    <input type="text" id='service_request_area' ng-model="ServiceData.service_request_area" name="Area" placeholder="Area *" required>
 
                 </label>
                 <label class="item item-input item-transpert">
-                    <input type="text" placeholder="Building/street" ng-model="ServiceData.service_request_street" name="street" required>
+                    <input type="text" placeholder="Building/street *" ng-model="ServiceData.service_request_street" name="street" required>
                 </label>
                 <label class="item item-input item-transpert">
-                    <input type="text" placeholder="Flat/House no" ng-model="ServiceData.service_request_house_no" name="house" required>
+                    <input type="text" placeholder="Flat/House no *" ng-model="ServiceData.service_request_house_no" name="house" required>
                 </label>
                 <label class="item item-input item-transpert">
-                    <input type="tel" placeholder="Number" name="phone" data-phone ng-model="ServiceData.service_request_mobile" required>
+                    <input type="tel" placeholder="Number *" name="phone" data-phone ng-model="ServiceData.service_request_mobile" required>
                 </label>
                 <p class="help-block" ng-show="appointment.phone.$dirty && appointment.phone.$error.phoneField">Please enter a valid phone number</p>
                 <label class="item item-input item-transpert">
 
-                    <input type="text" placeholder="Describe Problem" ng-model="ServiceData.service_request_problem" name="problem" required>
+                    <input type="text" placeholder="Describe Problem *" ng-model="ServiceData.service_request_problem" name="problem" required>
                 </label>
                 <label class="item item-input item-transpert">
                     <span class="input-label">Upload Image: {{pic}}
@@ -49,9 +49,7 @@
 
                 </label>
                 <img id="myImage" ng-src="{{lastPhoto}}" style="max-width: 100%">
-                <!--<label class="item item-input item-transpert">
-                    <input type="date"  placeholder="Appointment time:" ng-model="appointmenttime" name="appointmenttime"  required>
-                </label>-->
+
 
             </div>
             <div class="button-bar">

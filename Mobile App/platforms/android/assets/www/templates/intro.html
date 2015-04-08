@@ -1,7 +1,6 @@
 
-<ion-view cache-view="false" view-title="<i class='icon custom-Icon2 ion-android-contacts'></i><span class='bar-tilte'>About us</span>">
+<ion-view cache-view="false" view-title="<i class='icon custom-Icon2 ion-android-contacts'></i><span class='bar-tilte'>{{title}}</span>">
     <ion-nav-bar class="bar-assertive" align-title="left">
-
 
         <ion-nav-buttons side="right">
             <button class="button button-icon icon ion-navicon"></button>
@@ -10,14 +9,13 @@
     </ion-nav-bar>
     <ion-slide-box show-pager="true" on-slide-changed="slideHasChanged($index)" pager-click="pagerClick($index)">
         <ion-slide>
-            <div class="" ng-style="{'height':'{{contentH}}px','position':'relative'}">
+            <div class="" ng-style="{'height':'{{contentH}}px','position':'relative','overflow':'auto'}">
                 <div class="logo-center">
                     <img src="img/white_logo.png" class="logoWidth"/>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                        <p>{{content}}</p>
                     </div>
                 </div>
 
@@ -54,5 +52,5 @@
             </div>
         </ion-slide>
     </ion-slide-box>
-    <div class="skip1"><a class="button button-clear button-calm" ui-sref="login" >{{skip}}</a></div>
+    <div class="skip1"><a class="button button-clear button-calm" ng-click="leftButtons()" >{{skip}}</a></div>
 </ion-view>

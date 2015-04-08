@@ -1,38 +1,36 @@
-<ion-view  view-title="<i class='icon custom-Icon1 custom-order'><img src='img/home_96x96.png' class='navIcon' /></i><span class='bar-tilte'>My Profile</span>" hide-back-button="true" align-title="left" class="themeBgColor1" >
+<ion-view   view-title="<i class='icon custom-Icon2 ion-android-contact'></i><span class='bar-tilte'>My Profile</span>" hide-back-button="false" align-title="left" class="themeBgColor1" >
     <ion-content  has-header="true" has-tabs="true" padding="true">
-        <form  name="appointment" novalidate>
-            <div class="profile-image"><img ng-src="{{lastPhoto}}" style="max-width: 100%" class="profileImg">
-            <button class="button button-clear" ng-click="getPhoto()" style="display: inline-block; position: absolute;cursor: pointer" class="text-right">
+        <form name="profile" novalidate>
+            <div class="profile-image"><img id="profilePhoto" ng-src="{{profilePhoto}}" style="max-width: 100%" class="profileImg">
+            <button class="button button-clear" ng-click="openModal()" style="display: inline-block; position: absolute;cursor: pointer" class="text-right">
                 <i class="ion-compose "></i></button>
             </div>
             <div class="list">
-
-
                 <label class="item item-input item-transpert">
-                    <input type="text" placeholder="Name" ng-model="fullname" name="fullname"  readonly>
+                    <input type="text" placeholder="Name" ng-model="profile.name" name="name" ng-value="{{profile.name}}">
                 </label>
                 <label class="item item-input item-transpert">
-                    <input type="text" placeholder="+91 99999 99999" ng-model="phone" name="phone" required>
+                    <input type="tel" placeholder="Mobile" ng-model="profile.mobile" name="mobile" required>
                 </label>
                 <label class="item item-input item-transpert">
-                    <input type="email" placeholder="abc@gmail.com " ng-model="email" name="email"  readonly>
+                    <input type="email" placeholder="email" ng-model="profile.email" name="email"  readonly>
                 </label>
-                <label class="item item-input item-transpert">
+                <!--<label class="item item-input item-transpert">
                     <input type="password" placeholder="Changed password" name="password" ng-model="password" >
                 </label>
                 <label class="item item-input item-transpert">
                     <input type="password" placeholder="Confirm password" name="confirm_password" ng-model="confirm_password" >
                 </label>
+                -->
                 <label class="item item-input item-transpert">
-                    <textarea name="address" ng-model="address" placeholder="Address"></textarea>
-
+                    <textarea name="address" ng-model="profile.address" placeholder="Address">{{profile.address}}</textarea>
                 </label>
 
             </div>
-            <div class="button-bar">
-                <button class="button button-full button-assertive" type="submit" ng-click="updateProfile()">Update</button>
+            <div animate-me="animateToggle" ng-hide="true">{{message}}</div>
 
-            </div>
+            <button class="button button-full button-assertive" type="submit" ng-click="updateProfile()">Update</button>
+            <button ui-sref="menu.resetpassword" class="button button-full button-assertive">Reset Password</button>
         </form>
 
     </ion-content>

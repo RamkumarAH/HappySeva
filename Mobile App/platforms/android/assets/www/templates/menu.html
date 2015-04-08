@@ -4,10 +4,10 @@
             <ion-nav-back-button class="button-clear">
                 <i class="ion-chevron-left"></i>
             </ion-nav-back-button>
-           <!-- <ion-nav-buttons side="left" >
-               <button ng-controller="MainCtrl" class="button button-icon icon {{leftButton}}"></button>
-            </ion-nav-buttons>-->
-            <ion-nav-buttons side="right"  >
+
+            <ion-nav-buttons side="right">
+
+
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
             </ion-nav-buttons>
         </ion-nav-bar>
@@ -21,27 +21,27 @@
         <ion-content class="menubg">
             <ion-list>
                 <ion-item nav-clear menu-close ui-sref="menu.home" class="item item-icon-right item-assertive" >
-                    <i class="icon custom-Icon custom-House"></i>Home
+                    <i class='icon custom-Icon1 custom-order'><img src='img/home_96x96.png' class='navIcon' /></i>Home
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="menu.profile" class="item item-icon-right item-assertive" >
                     <i class="icon ion-android-contact"></i>My profile
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="menu.order" class="item item-icon-right item-assertive" >
-                    <i class="icon ion-bag"></i>My order
+                    <i class="icon ion-bag"></i>My service requests
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref="menu.about" class="item item-icon-right item-assertive" >
                     <i class="icon ion-android-contacts"></i>About us
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref="login" class="item item-icon-right item-assertive" >
+                <ion-item nav-clear menu-close ng-controller="LoginCtrl" ng-click="logout()" class="item item-icon-right item-assertive" >
                     <i class="icon ion-close-circled"></i>logout
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref="menu.home" class="item item-icon-right item-assertive" >
+                <ion-item nav-clear menu-close ui-sref="menu.support" class="item item-icon-right item-assertive" >
                     <i class="icon ion-gear-b"></i>Support
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref="menu.home" class="item item-icon-right item-assertive" >
+                <ion-item nav-clear menu-close ui-sref="menu.faq" class="item item-icon-right item-assertive" >
                     <i class="icon ion-help-circled"></i>FAQs
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref="menu.home" class="item item-icon-right item-assertive" >
+                <ion-item nav-clear menu-close ui-sref="menu.privacy" class="item item-icon-right item-assertive" >
                     <i class="icon ion-document-text"></i>Privacy Policy
                 </ion-item>
             </ion-list>

@@ -1,5 +1,5 @@
 
-<ion-view cache-view="false" view-title="Login" hide-back-button="true" class="themeBgColor1" >
+<ion-view cache-view="false" view-title="Login" hide-back-button="true" class="themeBgColor1">
     <ion-nav-bar class="bar-assertive" align-title="left">
         <ion-nav-buttons side="left">
             <button class="button button-icon icon ion-ios-locked"></button>
@@ -8,7 +8,7 @@
             <button class="button button-icon icon ion-navicon"></button>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-content has-header="true" has-tabs="true" padding="false">
+    <ion-content has-header="true" has-tabs="true" padding="false" scrollbar-y="">
         <div style="position: relative">
         <div class="logo-center">
             <img src="img/white_logo.png" class="logoWidth"/>
@@ -16,16 +16,14 @@
         </div>
     <form >
       <div class="list" style="padding: 2%">
-
        <label class="item item-input item-transpert">
           <input type="text" placeholder="Email" ng-model="loginData.useremail">
         </label>
         <label class="item item-input item-transpert">
           <input type="password" placeholder="Password" ng-model="loginData.password">
         </label>
-
-        <label class="text-right" style="display: block;">
-            <a ui-sref="#" class="button button-clear text-right">Forgot password?</a>
+        <label class="item item-normal" style="display: block;">
+            <button ui-sref="forgotpass" class="button button-clear">Forgot password?</button>
         </label>
         <div class="button-bar">
           <button class="button button-block button-assertive" ng-click="tryLogin()" type="submit">Login</button>

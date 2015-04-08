@@ -1,0 +1,21 @@
+<ion-view view-title="<i class='icon custom-Icon2 ion-help-circled'></i><span class='bar-tilte'>{{title}}</span>" hide-back-button="false" align-title="left" class="themeBgColor1" >
+    <ion-content class="has-header">
+        <ion-list>
+            <div ng-repeat="list in listFAQ">
+                <ion-item class="item-stable"
+                          ng-click="toggleGroup(list)"
+                          ng-class="{active: isGroupShown(list)}">
+                    <i class="icon" ng-class="isGroupShown(list) ? 'ion-minus' : 'ion-plus'"></i>
+                    &nbsp;
+                    {{list.faq_question}}
+
+                </ion-item>
+                <ion-item class="item-accordion"  ng-show="isGroupShown(list)">
+                    <i class="icon ion-ios7-telephone-outline"></i>
+                    {{list.faq_answer}}
+                </ion-item>
+            </div>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

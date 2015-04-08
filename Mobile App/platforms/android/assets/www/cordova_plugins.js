@@ -191,6 +191,17 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/nl.x-services.plugins.toast/www/Toast.js",
+        "id": "nl.x-services.plugins.toast.Toast",
+        "clobbers": [
+            "window.plugins.toast"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.toast/test/tests.js",
+        "id": "nl.x-services.plugins.toast.tests"
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -354,6 +365,7 @@ module.exports.metadata =
     "com.ionic.keyboard": "1.0.4",
     "org.apache.cordova.file-transfer": "0.5.0",
     "org.apache.cordova.statusbar": "0.1.10",
+    "nl.x-services.plugins.toast": "2.0.4",
     "org.apache.cordova.file": "1.3.3"
 }
 // BOTTOM OF METADATA

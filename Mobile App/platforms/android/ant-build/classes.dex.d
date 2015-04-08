@@ -10,6 +10,8 @@ C:\developmentProject\happysea\platforms\android\ant-build\classes\com\ionic\key
 C:\developmentProject\happysea\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$2.class \
 C:\developmentProject\happysea\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard$3.class \
 C:\developmentProject\happysea\platforms\android\ant-build\classes\com\ionic\keyboard\IonicKeyboard.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\nl\xservices\plugins\Toast$1.class \
+C:\developmentProject\happysea\platforms\android\ant-build\classes\nl\xservices\plugins\Toast.class \
 C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\batterystatus\BatteryListener$1.class \
 C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\batterystatus\BatteryListener.class \
 C:\developmentProject\happysea\platforms\android\ant-build\classes\org\apache\cordova\camera\CameraLauncher.class \

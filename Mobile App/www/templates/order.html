@@ -1,20 +1,31 @@
-<ion-view cache-view="false" hide-back-button="false"  view-title="<i class='icon custom-Icon2 ion-bag'></i><span class='bar-tilte'>My Orders</span>" align-title="left" class="themeBgColor1" >
+<ion-view cache-view="false" hide-back-button="false"  view-title="<i class='icon custom-Icon2 ion-bag'></i><span class='bar-tilte'>My service requests</span>" align-title="left" class="themeBgColor1" >
+
+
     <ion-content has-header="true" has-tabs="true" padding="true">
+
+        <div class="filterItem">
+            <select class="item-select" ng-model="prop.value" ng-options="v for v in prop.values">
+            </select>
+        </div>
         <div class="Order">
-            <h5>Active orders</h5>
+
+
+
             <ul class="active-order">
 
-                <li ng-repeat="order in orderlist  | filter: { status: 'active' }">
-                    <div class="active-{{order.status}}">
-                        Order id: {{order.orderId}}<br/>
-                        Order date: {{order.orderDate}}<br/>
-                        Vendor: {{order.vender}}<br/>
+                <li ng-repeat="order in selectedorderlist | orderBy:order.service_request_id:reverse | filter: filter2">
+                    <div class="active-{{order.status_ind}}">
+                        Status: {{order.status_ind}}<br/>
+                        Order id: {{order.service_request_id}}<br/>
+                        Order date: {{order.created_date}}<br/>
+                        Vendor: {{order.assigned_vendor}}<br/>
+                        Service: {{order.service_category_title}}<br/>
                         <a class="button button-clear text-right"><i class="ion ion-close"></i> Cancel</a>
 
                     </div>
                 </li>
             </ul>
-            <h5>Completed orders</h5>
+            <!--<h5>Completed orders</h5>
             <ul class="completed-order">
                 <li ng-repeat="order in orderlist | filter: { status: 'completed' }">
                     <div class="active-{{order.status}}">
@@ -26,6 +37,6 @@
                     </div>
                 </li>
             </ul>
-        </div>
+-->        </div>
     </ion-content>
 </ion-view>
