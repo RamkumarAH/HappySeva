@@ -33,9 +33,11 @@ angular.module('happysevaApp.homeControllers', [])
             $state.go('error');
         }
     })
-    .controller('HomeCtrl', function ($scope, $state, $cordovaNetwork, $ionicSideMenuDelegate, mainService, $cordovaGeolocation, $timeout, $rootScope, $ionicLoading, $cordovaToast) {
+    .controller('HomeCtrl', function ($scope, $state, $cordovaNetwork, $ionicSideMenuDelegate, mainService, $cordovaGeolocation, $timeout, $rootScope, $ionicLoading, $cordovaToast,authToken) {
         var isOnline = $cordovaNetwork.isOnline();
         if (isOnline) {
+            var token = authToken.getToken();
+            if(token!=null){
             $ionicLoading.show({
                 content: 'Loading',
                 animation: 'fade-in',
@@ -92,6 +94,9 @@ angular.module('happysevaApp.homeControllers', [])
                         // error
                     });
             };
+            }else{
+                $state.go('login');
+            }
         } else {
             $state.go('error');
         }
@@ -99,10 +104,11 @@ angular.module('happysevaApp.homeControllers', [])
 
     })
     //ServiceListCtrl
-    .controller('ServiceListCtrl', function ($scope, $state, $cordovaNetwork, mainService, $ionicPopup, $ionicLoading, $timeout, $cordovaToast) {
+    .controller('ServiceListCtrl', function ($scope, $state, $cordovaNetwork, mainService, $ionicPopup, $ionicLoading, $timeout, $cordovaToast, authToken) {
         var isOnline = $cordovaNetwork.isOnline();
         if (isOnline) {
-
+            var token = authToken.getToken();
+            if(token!=null){
             $ionicLoading.show({
                 content: 'Loading',
                 animation: 'fade-in',
@@ -155,7 +161,10 @@ angular.module('happysevaApp.homeControllers', [])
                     $scope.showAlert(name);
                 }
 
+            }}else{
+                $state.go('login');
             }
+
         } else {
             $state.go('error');
         }
@@ -164,6 +173,8 @@ angular.module('happysevaApp.homeControllers', [])
     .controller('OrderCtrl', function ($scope, $state, $cordovaNetwork, $ionicSideMenuDelegate, mainService, $ionicLoading, $timeout, HardwareBackButtonManager, $ionicPopover, authToken) {
         var isOnline = $cordovaNetwork.isOnline();
         if (isOnline) {
+            var token = authToken.getToken();
+            if(token!=null){
             HardwareBackButtonManager.disable();
 
             $scope.orderlist = [{
@@ -212,6 +223,9 @@ angular.module('happysevaApp.homeControllers', [])
                     }
                 });
             }, 2000);
+            }else{
+                $state.go('login');
+            }
         } else {
             $state.go('error');
         }
@@ -220,7 +234,9 @@ angular.module('happysevaApp.homeControllers', [])
     .controller('ProfileCtrl', function ($scope, $state, $cordovaNetwork, $ionicSideMenuDelegate, mainService, authToken, $ionicLoading, $cordovaCamera, $ionicModal, $cordovaToast) {
         var isOnline = $cordovaNetwork.isOnline();
         if (isOnline) {
-            var token = '';
+            var token = authToken.getToken();
+            if(token!=null){
+           // var token = '';
             $scope.profilePhoto = '';
             $scope.is_base64 = 0;
             $scope.$on('$ionicView.enter', function () {
@@ -231,7 +247,7 @@ angular.module('happysevaApp.homeControllers', [])
                     maxWidth: 200,
                     showDelay: 0
                 });
-                token = '';
+               // token = '';
                 $scope.currentImage = '';
                 $scope.profileClear();
                 $scope.profilePhoto = '';
@@ -256,7 +272,7 @@ angular.module('happysevaApp.homeControllers', [])
             };
 
             $scope.getProfiledata = function () {
-                token = authToken.getToken();
+               var token = authToken.getToken();
                 mainService.getProfileInfo(token).success(function (res) {
                     if (res.status) {
                         $scope.profile = res.data;
@@ -285,7 +301,7 @@ angular.module('happysevaApp.homeControllers', [])
                     maxWidth: 200,
                     showDelay: 0
                 });
-                token = authToken.getToken();
+                var token = authToken.getToken();
                 mainService.setProfileInfo(token, profile.name.value, profile.email.value, profile.mobile.value, profile.address.value, $scope.currentImage, $scope.is_base64).success(function (res) {
                     if (res.status) {
                         $scope.profile = res.data;
@@ -373,6 +389,9 @@ angular.module('happysevaApp.homeControllers', [])
             $scope.$on('modal.removed', function () {
                 // Execute action
             });
+            }else{
+                $state.go('login');
+            }
         } else {
             $state.go('error');
         }
@@ -384,8 +403,9 @@ angular.module('happysevaApp.homeControllers', [])
 
     })
     //ThankyouDetailsCtrl
-    .controller('ThankyouDetailsCtrl', function ($scope, $stateParams, $state, $ionicSideMenuDelegate, mainService, $ionicLoading) {
-
+    .controller('ThankyouDetailsCtrl', function ($scope, $stateParams, $state, $ionicSideMenuDelegate, mainService, $ionicLoading,authToken) {
+        var token = authToken.getToken();
+        if(token!=null){
         $ionicLoading.show({
             content: 'Loading',
             animation: 'fade-in',
@@ -410,21 +430,30 @@ angular.module('happysevaApp.homeControllers', [])
 
         })
         //alert($stateParams.vendorId);
-
+        }else{
+            $state.go('login');
+        }
     })
     //ThankyouCtrl
-    .controller('ThankyouCtrl', function ($scope, $state, $ionicSideMenuDelegate, mainService) {
-        $scope.contentH = window.innerHeight - 44;
-        $scope.serviceName = mainService.currentServiceName;
-        $scope.OrderID = mainService.currentOrderID;
-        $scope.smallIcon = mainService.currentServiceIconSmall;
+    .controller('ThankyouCtrl', function ($scope, $state, $ionicSideMenuDelegate, mainService, authToken) {
+        var token = authToken.getToken();
+        if(token!=null){
+            $scope.contentH = window.innerHeight - 44;
+            $scope.serviceName = mainService.currentServiceName;
+            $scope.OrderID = mainService.currentOrderID;
+            $scope.smallIcon = mainService.currentServiceIconSmall;
+        }else{
+            $state.go('login');
+        }
 
     })
     .controller('MenuCtrl', function ($scope, $state) {
 
     })
     //FaqCtrl
-    .controller('FaqCtrl', function ($scope, $state, mainService, $ionicLoading, $timeout) {
+    .controller('FaqCtrl', function ($scope, $state, mainService, $ionicLoading, $timeout, authToken) {
+        var token = authToken.getToken();
+        if(token!=null){
         $ionicLoading.show({
             content: 'Loading',
             animation: 'fade-in',
@@ -460,8 +489,13 @@ angular.module('happysevaApp.homeControllers', [])
         $scope.isGroupShown = function (group) {
             return $scope.shownGroup === group;
         };
+        }else{
+            $state.go('login');
+        }
     })
-    .controller('SupportCtrl', function ($scope, $state, mainService, $ionicLoading, $timeout) {
+    .controller('SupportCtrl', function ($scope, $state, mainService, $ionicLoading, $timeout, authToken) {
+        var token = authToken.getToken();
+        if(token!=null){
         $ionicLoading.show({
             content: 'Loading',
             animation: 'fade-in',
@@ -483,8 +517,13 @@ angular.module('happysevaApp.homeControllers', [])
              })*/
         };
         $scope.getContent();
+        }else{
+            $state.go('login');
+        }
     })
-    .controller('PrivacyCtrl', function ($scope, $state, mainService, $ionicLoading, $timeout) {
+    .controller('PrivacyCtrl', function ($scope, $state, mainService, $ionicLoading, $timeout, authToken) {
+        var token = authToken.getToken();
+        if(token!=null){
         $ionicLoading.show({
             content: 'Loading',
             animation: 'fade-in',
@@ -507,8 +546,13 @@ angular.module('happysevaApp.homeControllers', [])
             })
         };
         $scope.getContent();
+        }else{
+            $state.go('login');
+        }
     })
-    .controller('AboutusCtrl', function ($scope, $state, $cordovaNetwork, $rootScope, mainService, $ionicLoading, $timeout, $cordovaToast) {
+    .controller('AboutusCtrl', function ($scope, $state, $cordovaNetwork, $rootScope, mainService, $ionicLoading, $timeout, $cordovaToast, authToken) {
+        var token = authToken.getToken();
+        if(token!=null){
         $scope.title = '';
         $scope.content = '';
         $scope.SettingData = {
@@ -557,9 +601,13 @@ angular.module('happysevaApp.homeControllers', [])
             }
 
         }
+        }else{
+            $state.go('login');
+        }
     })
     .controller('AppointmentCtrl', function ($scope, $state, $cordovaToast, $ionicSideMenuDelegate, mainService, $cordovaCamera, $ionicModal, authToken) {
-
+        var token = authToken.getToken();
+        if(token!=null){
         $scope.location = '';
         $scope.ServiceData = {
             token: '',
@@ -592,8 +640,11 @@ angular.module('happysevaApp.homeControllers', [])
         var token = '';
         $scope.$on('$ionicView.enter', function () {
             $scope.ServiceData.token = '';
+            $scope.reset();
             $scope.ServiceData.token = authToken.getToken();
+
         });
+
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth() + 1; //January is 0!
@@ -615,12 +666,25 @@ angular.module('happysevaApp.homeControllers', [])
         $scope.ServiceData.service_category_id = mainService.currentServiceId;
         $scope.ServiceData.service_request_photo = '';
         $scope.checkValidation = function () {
+
             if ($scope.ServiceData.service_request_area != "" && $scope.ServiceData.service_request_street != "" && $scope.ServiceData.service_request_house_no != "" && $scope.ServiceData.service_request_mobile != "" &&
-                $scope.ServiceData.service_request_problem != "") {
+                $scope.ServiceData.service_request_problem != "" && $scope.ServiceData.service_request_area != undefined && $scope.ServiceData.service_request_street != undefined && $scope.ServiceData.service_request_house_no != undefined && $scope.ServiceData.service_request_mobile != undefined &&
+                $scope.ServiceData.service_request_problem != undefined && $scope.ServiceData.service_request_area != null && $scope.ServiceData.service_request_street != null && $scope.ServiceData.service_request_house_no != null && $scope.ServiceData.service_request_mobile != null &&
+                $scope.ServiceData.service_request_problem != null) {
                 return true;
             } else {
                 return false;
             }
+        };
+        $scope.reset = function () {
+            $scope.ServiceData = mainService.getServiceData();
+            $scope.ServiceData.service_request_city ='Bangalore';
+            $scope.ServiceData.service_request_time = $scope.currentDate;
+            $scope.ServiceData.home_option_id = mainService.categoryId;
+            $scope.ServiceData.service_category_id = mainService.currentServiceId;
+            $scope.ServiceData.service_request_photo = '';
+
+
         };
         $scope.NowService = function () {
             var valid = $scope.checkValidation();
@@ -630,8 +694,6 @@ angular.module('happysevaApp.homeControllers', [])
             } else {
                 $cordovaToast.show('Please fill the required field (*)', 'long', 'bottom')
             }
-
-
         };
 
         var date = new Date();
@@ -648,7 +710,7 @@ angular.module('happysevaApp.homeControllers', [])
             // alert($scope.location);
 
         };
-        $scope.lastPhoto = '';
+        $scope.lastPhoto = null;
 
         $scope.getPhoto = function () {
             console.log('upload img');
@@ -668,6 +730,7 @@ angular.module('happysevaApp.homeControllers', [])
                 var image = document.getElementById('myImage');
                 image.src = "data:image/jpeg;base64," + imageData;
                 $scope.ServiceData.service_request_photo = imageData;
+                $scope.imgShow = false;
                 $scope.closeModal();
             }, function (err) {
                 // error
@@ -693,13 +756,19 @@ angular.module('happysevaApp.homeControllers', [])
                 var image = document.getElementById('myImage');
                 image.src = "data:image/jpeg;base64," + imageData;
                 $scope.ServiceData.service_request_photo = imageData;
+                $scope.imgShow = false;
                 $scope.closeModal();
             }, function (err) {
                 // error
             }, false);
         }
         // popup Model for camera options
-
+        $scope.imgShow = true;
+        $scope.deleteImage = function(){
+            var image = document.getElementById('myImage');
+            image.src = '';
+            $scope.imgShow = true;
+        };
         $ionicModal.fromTemplateUrl('templates/my-model.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -724,10 +793,14 @@ angular.module('happysevaApp.homeControllers', [])
         $scope.$on('modal.removed', function () {
             // Execute action
         });
-
+        }else{
+            $state.go('login');
+        }
 
     })
-    .controller('ServiceNowCtrl', function ($scope, $state, $ionicSideMenuDelegate, mainService, $cordovaToast, $ionicLoading) {
+    .controller('ServiceNowCtrl', function ($scope, $state, $ionicSideMenuDelegate, mainService, $cordovaToast, $ionicLoading,authToken) {
+        var token = authToken.getToken();
+        if(token!=null){
         $scope.serviceName = mainService.currentServiceName;
         $scope.currentIcon = mainService.currentServiceIcon;
         $scope.smallIcon = mainService.currentServiceIconSmall;
@@ -753,10 +826,15 @@ angular.module('happysevaApp.homeControllers', [])
                 }
             });
         }
+        }else{
+            $state.go('login');
+        }
     })
-    .controller('ServiceMapCtrl', function ($scope, $window, $state, $ionicPlatform, $location, $ionicSideMenuDelegate, mainService, $ionicLoading, $compile, $cordovaNetwork, $rootScope, $cordovaGeolocation) {
+    .controller('ServiceMapCtrl', function ($scope, $window, $state, $ionicPlatform, $location, $ionicSideMenuDelegate, mainService, $ionicLoading, $compile, $cordovaNetwork, $rootScope, $cordovaGeolocation, authToken) {
         var isOnline = $cordovaNetwork.isOnline();
         if(isOnline){
+            var token = authToken.getToken();
+            if(token!=null){
         var lat, long;
         lat = localStorage.getItem("serviceLat");
         long = localStorage.getItem("serviceLong");
@@ -808,6 +886,9 @@ angular.module('happysevaApp.homeControllers', [])
                 }
             });
         };
+            }else{
+                $state.go('login');
+            }
         }else{
          $state.go('error');
          }

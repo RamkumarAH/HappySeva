@@ -34,7 +34,7 @@
                     <input type="text" placeholder="Flat/House no *" ng-model="ServiceData.service_request_house_no" name="house" required>
                 </label>
                 <label class="item item-input item-transpert">
-                    <input type="tel" placeholder="Number *" name="phone" data-phone ng-model="ServiceData.service_request_mobile" required>
+                    <input type="tel" placeholder="Phone no *" name="phone" data-phone ng-model="ServiceData.service_request_mobile" minlength="10" maxlength="12" ng-minlength="10" ng-maxlength="12" required>
                 </label>
                 <p class="help-block" ng-show="appointment.phone.$dirty && appointment.phone.$error.phoneField">Please enter a valid phone number</p>
                 <label class="item item-input item-transpert">
@@ -48,8 +48,11 @@
                         </span>
 
                 </label>
+                <div style="position:relative">
+                <button ng-hide="imgShow" class="button button-clear button-assertive" ng-click="deleteImage()" style="display: inline-block; position: absolute;right: 2%;cursor: pointer" class="text-right">
+                    <i class="ion-close-circled "></i></button>
                 <img id="myImage" ng-src="{{lastPhoto}}" style="max-width: 100%">
-
+                </div>
 
             </div>
             <div class="button-bar">

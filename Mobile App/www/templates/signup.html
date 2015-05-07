@@ -15,16 +15,15 @@
               <img src="img/white_logo.png" class="logoWidth"/>
           </div>
       </div>
-    <form ng-submit="trySignup()" method="post"  name="register" >
+    <form ng-submit="trySignup(register.$valid)" method="post"  name="register" novalidate>
       <div class="list">
         <label class="item item-input item-transpert">
           <input type="text" placeholder="Name:"  name="fullname" ng-model="fullname" required>
         </label>
         <label class="item item-input item-transpert">
           <input type="email" placeholder="Email:" name="useremail" ng-model="useremail"  required>
-
         </label>
-          <p class="help-block" ng-show="register.email.$dirty && register.email.$invalid">Please  enter a proper email</p>
+          <p class="help-block" ng-show="register.useremail.$dirty && register.useremail.$invalid">Please enter a proper email</p>
         <label class="item item-input item-transpert">
           <input type="password" name="password" placeholder="Password" ng-model="password"  required>
         </label>
@@ -34,8 +33,9 @@
           <p class="help-block" ng-show="register.password_confirm.$dirty && register.password_confirm.$error.validateEquals">please match the passwords</p>
           <div class="button-bar">
               <!--ng-disabled="register.$invalid"-->
+              <button class="button button-block button-dark" ui-sref="login">Back</button>
               <button  class="button button-block button-assertive" type="submit">Sign Up</button>
-              <button class="button button-block button-dark" ui-sref="login">Sign In</button>
+
           </div>
 
 
