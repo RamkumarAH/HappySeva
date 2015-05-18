@@ -59,38 +59,39 @@ angular.module('happysevaApp.authControllers', [])
     })
 
     .controller('SignupCtrl', function ($scope, $state, auth, $ionicLoading, $cordovaToast) {
+        $scope.trySignup = function (valid) {
+           if(valid){
+               $ionicLoading.show({
+                   content: 'Loading',
+                   animation: 'fade-in',
+                   showBackdrop: true,
+                   maxWidth: 200,
+                   showDelay: 0
+               });
+               $scope.fullname = register.fullname.value;
+               $scope.useremail = register.useremail.value;
+               $scope.password = register.password.value;
+               //alert($scope.fullname + ' '+ $scope.useremail +' '+ $scope.password);
+               auth.register($scope.fullname, $scope.useremail, $scope.password)
+                   .success(function (res) {
+                       if (res.status) {
+                           var data = JSON.stringify(res);
+                           //alert('success ' + data + '!');
+                           $ionicLoading.hide();
+                           $state.go('menu.home');
+                       } else {
+                           $ionicLoading.hide();
+                           $cordovaToast.show(res.msg, 'long', 'bottom');
 
-        $scope.trySignup = function () {
-            $ionicLoading.show({
-                content: 'Loading',
-                animation: 'fade-in',
-                showBackdrop: true,
-                maxWidth: 200,
-                showDelay: 0
-            });
-            $scope.fullname = register.fullname.value;
-            $scope.useremail = register.useremail.value;
-            $scope.password = register.password.value;
-            //alert($scope.fullname + ' '+ $scope.useremail +' '+ $scope.password);
-            auth.register($scope.fullname, $scope.useremail, $scope.password)
-                .success(function (res) {
-                    if (res.status) {
-                        var data = JSON.stringify(res);
-                        //alert('success ' + data + '!');
-                        $ionicLoading.hide();
-                        $state.go('menu.home');
-                    } else {
-                        $ionicLoading.hide();
-                        $cordovaToast.show(res.msg, 'long', 'bottom');
+                       }
+                   })
+                   .error(function () {
+                       $cordovaToast.show('Registration failed', 'long', 'bottom');
 
-                    }
-                })
-                .error(function () {
-                    $cordovaToast.show('Registration failed', 'long', 'bottom');
-
-                });
-
-
+                   });
+           }else{
+               $cordovaToast.show('Validation error', 'long', 'bottom');
+           }
         }
     })
     .controller('ForgotPasswordCtrl', function ($scope, $state, $cordovaNetwork, $rootScope, auth, $ionicLoading, $cordovaToast) {
